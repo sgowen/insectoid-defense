@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="text">#ffffff</color>
+    <color name="black_text">#000000</color>
+    <color name="listview_divider">#82898f</color>
+    <color name="rounded_table_border_color">#82898f</color>
+
+</resources>

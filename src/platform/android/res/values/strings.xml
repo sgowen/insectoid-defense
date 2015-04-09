@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Insectoid Defense</string>
+
+    <!-- Activity Main Menu -->
+    <string name="insectoid_defense"><u><b>Insectoid Defense</b></u></string>
+    <string name="play">Play</string>
+    <string name="how_to_play">How to Play</string>
+    <string name="rate_me">Rate Me</string>
+    <string name="leaderboards">Leaderboards</string>
+    <string name="achievements">Achievements</string>
+    <string name="rate_me_failure">Could not open Android market, please install the market app.</string>
+
+    <!-- Get Full Version -->
+    <string name="only_available_in_full_version">This level is only available in the <b>Full Version</b>. Click the button below to get it now! Don\'t worry, you will be able to pick up right where you left off, with more levels, more towers, and no ads!</string>
+    <string name="button_get_full_version">Get Full Version</string>
+
+    <!-- Activity Level Selection -->
+    <string name="select_a_level"><u><b>Select a Level</b></u></string>
+    <string name="easy_radio_button">Easy</string>
+    <string name="normal_radio_button">Normal</string>
+    <string name="hard_radio_button">Hard</string>
+    <string name="start">Start</string>
+
+    <!-- ListView Item Level -->
+    <string name="highscore_wave_format">Highscore: %1$s, Wave: %2$s</string>
+    <string name="level_locked">&lt;img/&gt; Level Locked</string>
+    <string name="level_2_locked">Reach wave 20 or higher in <u>Invasion!</u> to unlock!</string>
+    <string name="level_3_locked">Reach wave 30 or higher in <u>Freeze or Burn</u> to unlock!</string>
+    <string name="level_4_locked">Reach wave 30 or higher in <u>Hull Damage</u> to unlock!</string>
+    <string name="level_5_locked">Reach wave 30 or higher in <u>Clear a Path</u> to unlock!</string>
+    <string name="level_6_locked">Reach wave 20 or higher in <u>Hangar Breach</u> to unlock!</string>
+    <string name="level_7_locked">Reach wave 30 or higher in <u>Divided</u> to unlock!</string>
+    <string name="level_8_locked">Reach wave 20 or higher in <u>Blitzkrieg</u> to unlock!</string>
+    <string name="level_9_locked">Reach wave 50 or higher in <u>Full-scale War</u> to unlock!</string>
+    <string name="level_10_locked">Reach wave 40 or higher in <u>Sabotoge</u> to unlock!</string>
+
+    <!-- Level Unlocked Default Toast Messages -->
+    <string name="level_2_unlocked">Freeze or Burn unlocked!</string>
+    <string name="level_3_unlocked">Hull Damage unlocked!</string>
+    <string name="level_4_unlocked">Clear a Path unlocked!</string>
+    <string name="level_5_unlocked">Hangar Breach unlocked!</string>
+    <string name="level_6_unlocked">Divided unlocked!</string>
+    <string name="level_7_unlocked">Blitzkrieg unlocked!</string>
+    <string name="level_8_unlocked">Full-scale War unlocked!</string>
+    <string name="level_9_unlocked">Sabotoge unlocked!</string>
+    <string name="level_10_unlocked">Finale unlocked!</string>
+    <string name="game_cleared">Congratulations, you have beaten the game!</string>
+
+    <!-- Activity Game -->
+    <string name="back_button_pressed">Press again to exit&#8230;</string>
+
+    <!-- Dialog Game Over -->
+    <string name="game_over">Game Over!</string>
+    <string name="retry_button">Retry</string>
+
+    <!-- Dialog Paused -->
+    <string name="paused">Paused!</string>
+    <string name="resume_button">Resume</string>
+
+    <!-- Dialog Common -->
+    <string name="exit_button">Exit</string>
+
+    <!-- ImageView Content Descriptions -->
+    <string name="img_content_description">ImageView Content Description</string>
+
+</resources>

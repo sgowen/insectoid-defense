@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_menu_container"
+    style="@style/InsectoidDefenseActivity" >
+
+    <TextView
+        android:id="@+id/main_menu_title_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/insectoid_defense"
+        android:textSize="32sp" />
+
+    <LinearLayout
+        android:id="@+id/main_menu_all_buttons_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_menu_title_textview"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/main_menu_play_button"
+            style="@style/MainMenuButton"
+            android:onClick="clickPlay"
+            android:text="@string/play" />
+
+        <Button
+            android:id="@+id/main_menu_how_to_play_button"
+            style="@style/MainMenuButton"
+            android:layout_marginTop="10dp"
+            android:onClick="clickHowToPlay"
+            android:text="@string/how_to_play" />
+    </LinearLayout>
+
+</RelativeLayout>

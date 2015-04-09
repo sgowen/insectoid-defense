@@ -1,0 +1,42 @@
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Coding4Fun.Toolkit
+packages/
+Toolkit.Content/
+
+# libpng
+libpng/
+!libpng/Android.mk
+!libpng/libpng_readme.txt
+
+# Eclipse
+bin/
+gen/
+*.class
+*.dex
+*.apk
+*.ap_
+obj/
+armeabi/
+armeabi-v7a/
+mips/
+x86/
+
+# Xcode
+*.xcuserdatad/
+xcuserdata/
+xcshareddata/
+
+# Visual Studio
+*.ipch
+*.user
+*.*sdf
+*.suo
+ARM/
+Debug/
+Release/
+Generated Files/

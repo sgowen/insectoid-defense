@@ -1,0 +1,104 @@
+﻿<phone:PhoneApplicationPage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:InsectoidDefense"
+    x:Class="InsectoidDefense.LevelSelect"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Landscape" Orientation="LandscapeLeft"
+    shell:SystemTray.IsVisible="False">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/page_background.png" Stretch="UniformToFill" />
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28" Grid.ColumnSpan="2">
+            <TextBlock Text="Select a Level" Style="{StaticResource PhoneTextNormalStyle}" Foreground="White" FontFamily="/Assets/astrolyt.ttf#Astrolyte" HorizontalAlignment="Center" VerticalAlignment="Center" TextDecorations="Underline" FontSize="72"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+            <Grid Name="RadGrid" HorizontalAlignment="Left" Height="58" Margin="415,-5,0,0" VerticalAlignment="Top" Width="361" >
+                <RadioButton x:Name="EasyButton" Content="Easy" HorizontalAlignment="Left" Margin="-31,-8,0,-23" VerticalAlignment="Top" FontFamily="/Assets/astrolyt.ttf#Astrolyte" FontSize="22" Width="137" Height="90" RenderTransformOrigin="0.5,0.5" Foreground="White" Background="#FF00DE00">
+                    <RadioButton.RenderTransform>
+                        <CompositeTransform ScaleX="0.7" ScaleY="0.7"/>
+                    </RadioButton.RenderTransform>
+                </RadioButton>
+                <RadioButton x:Name="NormalButton" Content="Normal" HorizontalAlignment="Left" Margin="106,-8,0,-23" VerticalAlignment="Top" FontFamily="/Assets/astrolyt.ttf#Astrolyte" FontSize="22" Width="175" Height="90" RenderTransformOrigin="0.5,0.5" Foreground="White" Background="#FFFF7F00" IsChecked="true">
+                    <RadioButton.RenderTransform>
+                        <CompositeTransform ScaleX="0.7" ScaleY="0.7"/>
+                    </RadioButton.RenderTransform>
+                </RadioButton>
+                <RadioButton x:Name="HardButton" Content="Hard" HorizontalAlignment="Left" Margin="246,-12,-16,-19" VerticalAlignment="Top" FontFamily="/Assets/astrolyt.ttf#Astrolyte" FontSize="22" Width="131" Height="90" RenderTransformOrigin="0.25,0.25" Foreground="White" Background="Red">
+                    <RadioButton.RenderTransform>
+                        <CompositeTransform ScaleX="0.7" ScaleY="0.7" TranslateX="16.375" TranslateY="11.25"/>
+                    </RadioButton.RenderTransform>
+                </RadioButton>
+            </Grid>
+            <Grid Margin="369,58,0,0">
+                <ScrollViewer Name="Scroll" Margin="41,-10,0,10">
+                    <ListBox x:Name="MainBox" FontFamily="/Assets/astrolyt.ttf#Astrolyte" Padding="20,8,0,8" Height="298" Foreground="WhiteSmoke" Background="#99FFFFFF" RenderTransformOrigin="-0.125,0.363" Width="417" SelectionChanged="MainBox_SelectionChanged" HorizontalContentAlignment="Left">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <local:ListBoxSelector Content="{Binding}">
+                                    <local:ListBoxSelector.Unlocked>
+                                        <DataTemplate>
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding Name}"/>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="HighScore: " FontSize="14"/>
+                                                    <TextBlock Text="{Binding HighScore}" FontSize="14"/>
+                                                    <TextBlock Text="  Wave: " FontSize="14"/>
+                                                    <TextBlock Text="{Binding HighWave}" FontSize="14"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </local:ListBoxSelector.Unlocked>
+                                    <local:ListBoxSelector.Locked>
+                                        <DataTemplate>
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding Name}"/>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Image Source="/Assets/Ship Images/lock_icon.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="11" Height="11"/>
+                                                    <TextBlock Text="{Binding UnlockMessage}" FontSize="11"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </local:ListBoxSelector.Locked>
+                                </local:ListBoxSelector>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </ScrollViewer>
+            </Grid>
+            <Image x:Name="ShipImage" HorizontalAlignment="Left" Height="158" Margin="24,-15,0,0" VerticalAlignment="Top" Width="340" Source="/Assets/ship_default.png"/>
+            <Grid>
+                <TextBlock x:Name="description" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-1.195,-0.296" Height="204" Width="378" Foreground="White" FontFamily="/Assets/astrolyt.ttf#Astrolyte" Text="{Binding}" FontSize="16" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="10,141,0,0"/>
+                <Button x:Name="StartButton" Content="Start" HorizontalAlignment="Left" Margin="101,286,0,-10" VerticalAlignment="Top" Width="388" Height="79" FontFamily="/Assets/astrolyt.ttf#Astrolyte" RenderTransformOrigin="0.5,0.5" Click="StartButton_Click" Background="{x:Null}" Foreground="White" BorderBrush="White" Visibility="Collapsed">
+                    <Button.RenderTransform>
+                        <CompositeTransform ScaleX="0.6" ScaleY="0.6"/>
+                    </Button.RenderTransform>
+                </Button>
+            </Grid>
+        </Grid>
+
+        <MediaElement Height="120" 
+            HorizontalAlignment="Left" Margin="89,263,0,0" 
+            Name="mediaElement1" VerticalAlignment="Bottom" Visibility="Collapsed"
+            Width="160" Source="/Assets/level_selection_bgm.wav" AutoPlay="True" />
+    </Grid>
+
+</phone:PhoneApplicationPage>
