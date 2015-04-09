@@ -1,15 +1,11 @@
 package com.gowengamedev.insectoiddefense;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-
-import com.gowengamedev.insectoiddefense.R;
 
 public final class MainMenuActivity extends Activity
 {
@@ -34,10 +30,5 @@ public final class MainMenuActivity extends Activity
     public void clickPlay(View view)
     {
         LevelSelectionActivity.startActivity(this);
-    }
-
-    public void clickHowToPlay(View view)
-    {
-        startActivity(new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("https://s3.amazonaws.com/insectoiddefense/insectoid-defense-how-to-play/index.html")));
     }
 }

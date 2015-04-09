@@ -42,10 +42,4 @@
     [self performSegueWithIdentifier:@"Main_To_Level_Select" sender:self];
 }
 
-- (IBAction)howToPlayTouchUpInside:(id)sender
-{
-    NSURL *url = [NSURL URLWithString:@"https://s3.amazonaws.com/insectoiddefense/insectoid-defense-how-to-play/index.html"];
-    [[UIApplication sharedApplication] openURL:url];
-}
-
 @end

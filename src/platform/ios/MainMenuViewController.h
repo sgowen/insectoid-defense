@@ -15,6 +15,5 @@
 @property (strong, nonatomic) IBOutlet UIButton *playButton;
 
 - (IBAction)playTouchUpInside:(id)sender;
-- (IBAction)howToPlayTouchUpInside:(id)sender;
 
 @end
