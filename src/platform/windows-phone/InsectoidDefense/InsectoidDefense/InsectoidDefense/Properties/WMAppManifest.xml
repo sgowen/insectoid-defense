@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{02f383a6-6f11-43f0-a137-c03b942df24c}" Title="Insectoid Defense" RuntimeType="Silverlight" Version="3.0.0.0" Genre="apps.normal" Author="Gowen Game Dev" Description="Drag n' Drop Towers to defend your ship!" Publisher="Gowen Game Dev" PublisherID="{fb677fe8-011b-4bad-a835-47bce8d59511}">
+  <App xmlns="" ProductID="{02f383a6-6f11-43f0-a137-c03b942df24c}" Title="Insectoid Defense" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Gowen Game Dev" Description="Drag n' Drop Towers to defend your ship!" Publisher="Gowen Game Dev" PublisherID="{fb677fe8-011b-4bad-a835-47bce8d59511}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
