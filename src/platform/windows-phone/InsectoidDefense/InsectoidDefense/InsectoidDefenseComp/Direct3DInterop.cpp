@@ -231,15 +231,6 @@ namespace InsectoidDefenseComp
 		int difficulty = m_gameScreen->getDifficulty();
 		int levelIndex = m_gameScreen->getLevelIndex();
 
-		if (wave % 10 == 0 && wave <= 40 && isAtMaxHealth)
-		{
-			std::wstring achievementId = AchievementMapper::GetIDForAchievement(difficulty, levelIndex, wave);
-			if (achievementId.length() > 0)
-			{
-				m_winRtCallback->Invoke("UNLOCK_ACHIEVEMENT", ref new Platform::String(achievementId.c_str()));
-			}
-		}
-
 		if (!m_isMinimumWaveRequirementMet && wave >= AchievementMapper::getWaveRequirementForLevelIndex(levelIndex))
 		{
 			m_isMinimumWaveRequirementMet = true;
@@ -247,12 +238,6 @@ namespace InsectoidDefenseComp
 			std::wstring levelUnlockedMessage = AchievementMapper::getUnLockedMessageForLevelIndex(levelIndex);
 
 			m_winRtCallback->Invoke("DISPLAY_TOAST", ref new Platform::String(levelUnlockedMessage.c_str()));
-
-			std::wstring achievementId = AchievementMapper::GetIDForLevelUnlockAchievement(difficulty, levelIndex);
-			if (achievementId.length() > 0)
-			{
-				m_winRtCallback->Invoke("UNLOCK_ACHIEVEMENT", ref new Platform::String(achievementId.c_str()));
-			}
 		}
 	}
 

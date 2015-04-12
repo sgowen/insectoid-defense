@@ -30,13 +30,6 @@
         <StackPanel Grid.Row="0" Margin="12,17,0,28" Grid.RowSpan="2">
             <TextBlock Text="Insectoid Defense" Margin="0" Style="{StaticResource PhoneTextTitle1Style}"  Foreground="White" FontFamily="/Assets/astrolyt.ttf#Astrolyte" HorizontalAlignment="Center" VerticalAlignment="Center" TextDecorations="Underline" />
         </StackPanel>
-        <Button Content="How to Play" Foreground="White" BorderBrush="White" FontFamily="/Assets/astrolyt.ttf#Astrolyte" HorizontalAlignment="Right" Margin="0,171,10,0" Grid.Row="2" VerticalAlignment="Top" Height="66" Width="198" Click="Button_Click"/>
-
-        <Button Content="Leaderboards" Foreground="White" BorderBrush="White" HorizontalAlignment="Left" FontFamily="/Assets/astrolyt.ttf#Astrolyte" Margin="12,171,0,0" Grid.Row="2" VerticalAlignment="Top" Click="Button_Click_2"/>
-        <Button Content="Rate App" Foreground="White" BorderBrush="White" HorizontalAlignment="Right" Margin="0,105,10,0" Grid.Row="2" VerticalAlignment="Top" FontFamily="/Assets/astrolyt.ttf#Astrolyte" Click="Button_Click_3"/>
-        <Button Content="Sign In" Foreground="White" BorderBrush="White" FontFamily="/Assets/astrolyt.ttf#Astrolyte" HorizontalAlignment="Left" Margin="12,110,0,0" Grid.Row="2" VerticalAlignment="Top" Click="Button_Click_4"/>
-        <Button Name="AchieveButton" Content="Achievements" Foreground="White" BorderBrush="White" HorizontalAlignment="Left" Margin="12,229,0,0" FontFamily="/Assets/astrolyt.ttf#Astrolyte" Grid.Row="2" VerticalAlignment="Top" Width="211" Click="AchieveButton_Click"/>
-        <TextBlock x:Name="SignInBox" FontFamily="/Assets/astrolyt.ttf#Astrolyte" HorizontalAlignment="Left" Margin="12,0,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding}" VerticalAlignment="Top" Height="100" Width="320" FontSize="22" TextAlignment="Center"/>
         <phone:WebBrowser x:Name="browser" HorizontalAlignment="Left" Foreground="White" BorderBrush="White" VerticalAlignment="Top" Grid.RowSpan="3" Height="{Binding ActualHeight, ElementName=LayoutRoot}" Width="{Binding ActualWidth, ElementName=LayoutRoot}" Visibility="Collapsed"/>
     </Grid>
 
