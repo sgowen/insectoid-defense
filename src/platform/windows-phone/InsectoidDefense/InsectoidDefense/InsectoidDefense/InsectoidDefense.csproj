@@ -297,12 +297,6 @@
     <Reference Include="Coding4Fun.Toolkit.Controls">
       <HintPath>..\..\packages\Coding4Fun.Toolkit.Controls.2.0.8\lib\windowsphone8\Coding4Fun.Toolkit.Controls.dll</HintPath>
     </Reference>
-    <Reference Include="GoogleAds, Version=6.5.13.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\battle-bombs\src\3rdparty\GoogleMobileAdsSdkWindowsPhone8-6.5.13\GoogleAds.dll</HintPath>
-    </Reference>
-    <Reference Include="OpenXLive, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="OpenXLive.Silverlight, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
