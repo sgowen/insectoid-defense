@@ -58,7 +58,6 @@
 		BB7305E4189C6C06009F6DF4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB7305E3189C6C06009F6DF4 /* AVFoundation.framework */; };
 		BB74E80718C2541F007C223E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB74E80518C2541F007C223E /* Localizable.strings */; };
 		BB81B1BD19BE1A1800548837 /* GGDDeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BB81B1BC19BE1A1800548837 /* GGDDeviceUtil.m */; };
-		BB9139C918BEFCC800E51FB5 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9139C818BEFCC800E51FB5 /* MainViewController.m */; };
 		BB98B5A81A1C4F94000A06F7 /* LevelWaveRequirementMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = BB98B5A61A1C4F94000A06F7 /* LevelWaveRequirementMapper.m */; };
 		BBA4C27E1A16CCD500AB3878 /* DynamicGameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBA4C1CD1A16CCD400AB3878 /* DynamicGameObject.cpp */; };
 		BBA4C27F1A16CCD500AB3878 /* DynamicGridGameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBA4C1CF1A16CCD400AB3878 /* DynamicGridGameObject.cpp */; };
@@ -278,8 +277,6 @@
 		BB81B1BB19BE1A1800548837 /* GGDDeviceUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGDDeviceUtil.h; sourceTree = "<group>"; };
 		BB81B1BC19BE1A1800548837 /* GGDDeviceUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGDDeviceUtil.m; sourceTree = "<group>"; };
 		BB8B5BCA1A4F292000AE25A7 /* FlagUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlagUtil.h; sourceTree = "<group>"; };
-		BB9139C718BEFCC800E51FB5 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		BB9139C818BEFCC800E51FB5 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		BB98B5A21A1C48D8000A06F7 /* ScreenState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenState.h; sourceTree = "<group>"; };
 		BB98B5A51A1C4F94000A06F7 /* LevelWaveRequirementMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelWaveRequirementMapper.h; sourceTree = "<group>"; };
 		BB98B5A61A1C4F94000A06F7 /* LevelWaveRequirementMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelWaveRequirementMapper.m; sourceTree = "<group>"; };
@@ -655,18 +652,18 @@
 				BB7305D5189C598D009F6DF4 /* AppPrefs.m */,
 				BB5C577919B9F87700AD76E7 /* GameViewController.h */,
 				BB5C577A19B9F87700AD76E7 /* GameViewController.mm */,
+				BB81B1BB19BE1A1800548837 /* GGDDeviceUtil.h */,
+				BB81B1BC19BE1A1800548837 /* GGDDeviceUtil.m */,
 				BB00E13E1A1EC4C300AF1155 /* LevelSelectionViewController.h */,
 				BB00E13F1A1EC4C300AF1155 /* LevelSelectionViewController.m */,
-				BB98B5A51A1C4F94000A06F7 /* LevelWaveRequirementMapper.h */,
-				BB98B5A61A1C4F94000A06F7 /* LevelWaveRequirementMapper.m */,
 				BB40F6051A1F977A004C7562 /* LevelTableViewCell.h */,
 				BB40F6061A1F977A004C7562 /* LevelTableViewCell.m */,
+				BB98B5A51A1C4F94000A06F7 /* LevelWaveRequirementMapper.h */,
+				BB98B5A61A1C4F94000A06F7 /* LevelWaveRequirementMapper.m */,
 				BBCDD32318BFC8E1003A4EED /* Logger.h */,
 				BBCDD32418BFC8E1003A4EED /* Logger.m */,
 				BB00E1401A1EC4C300AF1155 /* MainMenuViewController.h */,
 				BB00E1411A1EC4C300AF1155 /* MainMenuViewController.m */,
-				BB9139C718BEFCC800E51FB5 /* MainViewController.h */,
-				BB9139C818BEFCC800E51FB5 /* MainViewController.m */,
 				BB7305D6189C598D009F6DF4 /* Music.h */,
 				BB7305D7189C598D009F6DF4 /* Music.m */,
 				0A8FBF6D179DF3850039BA29 /* platform_asset_utils.m */,
@@ -675,13 +672,11 @@
 				BB6152241A1C617A00A43E75 /* SaveData.m */,
 				BB7305D8189C598D009F6DF4 /* Sound.h */,
 				BB7305D9189C598D009F6DF4 /* Sound.m */,
-				BB40F6021A1F9132004C7562 /* ViewUtils.h */,
-				BB40F6031A1F9132004C7562 /* ViewUtils.m */,
 				0ADF1882178E2185005DA99E /* Supporting Files */,
-				BB81B1BB19BE1A1800548837 /* GGDDeviceUtil.h */,
-				BB81B1BC19BE1A1800548837 /* GGDDeviceUtil.m */,
 				BB12EDDE1A1D585B006D385B /* UIView+Toast.h */,
 				BB12EDDF1A1D585B006D385B /* UIView+Toast.m */,
+				BB40F6021A1F9132004C7562 /* ViewUtils.h */,
+				BB40F6031A1F9132004C7562 /* ViewUtils.m */,
 			);
 			name = ios;
 			sourceTree = "<group>";
@@ -1266,7 +1261,6 @@
 				0A8FBF89179E07320039BA29 /* pngwtran.c in Sources */,
 				BBA4C2A81A16CCD500AB3878 /* IceTower.cpp in Sources */,
 				BBA4C28D1A16CCD500AB3878 /* AcidDrop.cpp in Sources */,
-				BB9139C918BEFCC800E51FB5 /* MainViewController.m in Sources */,
 				BBA4C3FD1A16CF5000AB3878 /* Renderer.cpp in Sources */,
 				BBA4C29B1A16CCD500AB3878 /* ElectricBolt.cpp in Sources */,
 				BBA4C2981A16CCD500AB3878 /* Creep.cpp in Sources */,
