@@ -1,12 +1,10 @@
 
 package com.gowengamedev.insectoiddefense;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import android.annotation.SuppressLint;
 
-import com.gowengamedev.insectoiddefense.R;
+import java.util.HashMap;
+import java.util.Map;
 
 @SuppressLint("UseSparseArrays")
 public final class LevelWaveRequirementMapper
@@ -17,7 +15,7 @@ public final class LevelWaveRequirementMapper
 
     static
     {
-        levelWaveRequirementMap = new HashMap<Integer, Integer>();
+        levelWaveRequirementMap = new HashMap<>();
         levelWaveRequirementMap.put(0, 20);
         levelWaveRequirementMap.put(1, 30);
         levelWaveRequirementMap.put(2, 30);
@@ -29,7 +27,7 @@ public final class LevelWaveRequirementMapper
         levelWaveRequirementMap.put(8, 40);
         levelWaveRequirementMap.put(9, 60);
 
-        levelLockedDescriptionStringResourceMap = new HashMap<Integer, Integer>();
+        levelLockedDescriptionStringResourceMap = new HashMap<>();
         levelLockedDescriptionStringResourceMap.put(1, R.string.level_2_locked);
         levelLockedDescriptionStringResourceMap.put(2, R.string.level_3_locked);
         levelLockedDescriptionStringResourceMap.put(3, R.string.level_4_locked);
@@ -40,7 +38,7 @@ public final class LevelWaveRequirementMapper
         levelLockedDescriptionStringResourceMap.put(8, R.string.level_9_locked);
         levelLockedDescriptionStringResourceMap.put(9, R.string.level_10_locked);
 
-        levelUnlockedAchievementTextMap = new HashMap<Integer, Integer>();
+        levelUnlockedAchievementTextMap = new HashMap<>();
         levelUnlockedAchievementTextMap.put(0, R.string.level_2_unlocked);
         levelUnlockedAchievementTextMap.put(1, R.string.level_3_unlocked);
         levelUnlockedAchievementTextMap.put(2, R.string.level_4_unlocked);
