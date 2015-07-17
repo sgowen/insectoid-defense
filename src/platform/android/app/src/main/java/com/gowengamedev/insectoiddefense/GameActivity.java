@@ -14,8 +14,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 
-import com.gowengamedev.insectoiddefense.R;
-
 public final class GameActivity extends Activity
 {
     private static final Logger logger = new Logger(GameActivity.class);
@@ -38,7 +36,6 @@ public final class GameActivity extends Activity
     {
         super.onCreate(savedInstanceState);
 
-        // Do the stuff that initialize() would do for you
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
