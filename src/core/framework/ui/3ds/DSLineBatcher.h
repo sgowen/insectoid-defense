@@ -11,16 +11,32 @@
 
 #include "LineBatcher.h"
 
+#include <vector>
+
+#include <3ds.h>
+
+struct LINE
+{
+    float oX, oY, eX, eY; // Vertices
+    float r, g, b, a; // Color for Vertices
+};
+
 class DSLineBatcher : public LineBatcher
 {
 public:
-    DSLineBatcher();
-    
+    DSLineBatcher(gfxScreen_t screen, int screenWidth, int screenHeight);
+
     virtual void beginBatch();
-    
+
     virtual void endBatch();
-    
+
     virtual void renderLine(float originX, float originY, float endX, float endY, Color &color);
+
+private:
+    std::vector<LINE> m_lines;
+    gfxScreen_t m_screen;
+    int m_iScreenWidth;
+    int m_iScreenHeight;
 };
 
 #endif /* defined(__gowengamedev__DSLineBatcher__) */

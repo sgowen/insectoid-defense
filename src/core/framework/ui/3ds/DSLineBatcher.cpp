@@ -6,21 +6,24 @@
 //  Copyright (c) 2015 Gowen Game Dev. All rights reserved.
 //
 
-#define VERTICES_PER_LINE 2
-
 #include "DSLineBatcher.h"
 #include "macros.h"
 #include "Line.h"
 #include "Vector2D.h"
+#include "GameConstants.h"
 
-DSLineBatcher::DSLineBatcher() : LineBatcher()
+#include <sf2d.h>
+
+#define LINE_THICKNESS GAME_WIDTH / 1000.0f
+
+DSLineBatcher::DSLineBatcher(gfxScreen_t screen, int screenWidth, int screenHeight) : m_screen(screen), m_iScreenWidth(screenWidth), m_iScreenHeight(screenHeight)
 {
     m_iNumLines = 0;
 }
 
 void DSLineBatcher::beginBatch()
 {
-//    OGLESManager->m_colorVertices.clear();
+    m_lines.clear();
     m_iNumLines = 0;
 }
 
@@ -28,18 +31,19 @@ void DSLineBatcher::endBatch()
 {
     if (m_iNumLines > 0)
     {
-//        OGLESManager->prepareForGeometryRendering();
-//        
-//        glDrawArrays(GL_LINES, 0, VERTICES_PER_LINE * m_iNumLines);
-//        
-//        OGLESManager->finishGeometryRendering();
+        for (std::vector<LINE>::iterator itr = m_lines.begin(); itr != m_lines.end(); ++itr)
+        {
+            LINE l = *itr;
+
+            sf2d_draw_line(l.oX, l.oY, l.eX, l.eY, LINE_THICKNESS, RGBA8((int) (l.r * 255), (int) (l.g * 255), (int) (l.b * 255), (int) (l.a * 255)));
+        }
     }
 }
 
 void DSLineBatcher::renderLine(float originX, float originY, float endX, float endY, Color &color)
 {
-//    OGLESManager->addVertexCoordinate(originX, originY, 0, color.red, color.green, color.blue, color.alpha);
-//    OGLESManager->addVertexCoordinate(endX, endY, 0, color.red, color.green, color.blue, color.alpha);
-    
+    LINE l = {originX, GAME_HEIGHT - originY, endX, GAME_HEIGHT - endY, color.red, color.green, color.blue, color.alpha};
+    m_lines.push_back(l);
+
     m_iNumLines++;
 }

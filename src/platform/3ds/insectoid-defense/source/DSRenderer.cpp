@@ -73,8 +73,8 @@ sf2d_texture *topLevelUiTex;
 DSRenderer::DSRenderer(gfxScreen_t screen, int screenWidth, int screenHeight) : Renderer()
 {
     m_spriteBatcher = std::unique_ptr<DSSpriteBatcher>(new DSSpriteBatcher(screen, screenWidth, screenHeight));
-    m_rectangleBatcher = std::unique_ptr<DSRectangleBatcher>(new DSRectangleBatcher(false));
-    m_lineBatcher = std::unique_ptr<DSLineBatcher>(new DSLineBatcher());
+    m_rectangleBatcher = std::unique_ptr<DSRectangleBatcher>(new DSRectangleBatcher(screen, screenWidth, screenHeight, false));
+    m_lineBatcher = std::unique_ptr<DSLineBatcher>(new DSLineBatcher(screen, screenWidth, screenHeight));
     m_circleBatcher = std::unique_ptr<DSCircleBatcher>(new DSCircleBatcher());
 
     sf2d_init(GAME_WIDTH, GAME_HEIGHT, GAME_WIDTH, GAME_HEIGHT);
