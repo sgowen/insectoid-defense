@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Gowen Game Dev. All rights reserved.
 //
 
+#include "pch.h"
 #include "macros.h"
 #include "Direct3DSpriteBatcher.h"
 #include "BasicReaderWriter.h"

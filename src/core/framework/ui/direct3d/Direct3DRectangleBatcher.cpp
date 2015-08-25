@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Gowen Game Dev. All rights reserved.
 //
 
+#include "pch.h"
 #include "Direct3DRectangleBatcher.h"
 #include "BasicReaderWriter.h"
 #include "GameConstants.h"

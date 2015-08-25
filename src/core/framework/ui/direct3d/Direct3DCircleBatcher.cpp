@@ -8,6 +8,7 @@
 
 #define DEGREE_SPACING 6
 
+#include "pch.h"
 #include "Direct3DCircleBatcher.h"
 #include "BasicReaderWriter.h"
 #include "GameConstants.h"

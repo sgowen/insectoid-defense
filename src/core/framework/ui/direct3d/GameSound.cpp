@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Gowen Game Dev. All rights reserved.
 //
 
+#include "pch.h"
 #include "GameSound.h"
 #include "SoundFileReader.h"
 

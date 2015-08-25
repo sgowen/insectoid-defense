@@ -8,6 +8,7 @@
 
 #define VERTICES_PER_LINE 2
 
+#include "pch.h"
 #include "Direct3DLineBatcher.h"
 #include "BasicReaderWriter.h"
 #include "GameConstants.h"
