@@ -21,7 +21,7 @@
 
 #include <math.h>
 
-Missile::Missile(float x, float y, float width, float height, float velocityConstant, float directionalAngle, int damage, Explosion_Type explosionType, Creep *target) : DynamicGameObject (x, y, width, height, directionalAngle)
+Missile::Missile(float x, float y, float width, float height, float velocityConstant, float directionalAngle, int damage, Explosion_Type explosionType, Creep *target) : PhysicalEntity (x, y, width, height, directionalAngle)
 {
 	m_target = target;
 	m_fVelocityConstant = velocityConstant;
@@ -72,11 +72,6 @@ void Missile::update(float deltaTime, std::vector<std::unique_ptr<Creep>> &creep
 			}
 		}
 	}
-}
-
-float Missile::getStateTime()
-{
-	return m_fStateTime;
 }
 
 bool Missile::remove()

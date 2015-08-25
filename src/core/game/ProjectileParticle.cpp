@@ -14,7 +14,7 @@
 
 #include <math.h>
 
-ProjectileParticle::ProjectileParticle(float x, float y, float width, float height, float velocityConstant, float directionalAngle) : DynamicGameObject (x, y, width, height, directionalAngle)
+ProjectileParticle::ProjectileParticle(float x, float y, float width, float height, float velocityConstant, float directionalAngle) : PhysicalEntity (x, y, width, height, directionalAngle)
 {
 	m_fAlpha = 1;
 	m_fRed = 1;
@@ -41,11 +41,6 @@ Color ProjectileParticle::getColor()
 {
 	Color color = Color(m_fRed, m_fGreen, m_fBlue, m_fAlpha);
 	return color;
-}
-	
-float ProjectileParticle::getStateTime()
-{
-	return m_fStateTime;
 }
 	
 bool ProjectileParticle::remove()

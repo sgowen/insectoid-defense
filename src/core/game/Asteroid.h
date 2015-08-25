@@ -9,10 +9,10 @@
 #ifndef __insectoiddefense__Asteroid__
 #define __insectoiddefense__Asteroid__
 
-#include "DynamicGameObject.h"
+#include "PhysicalEntity.h"
 #include "AsteroidType.h"
 
-class Asteroid : public DynamicGameObject
+class Asteroid : public PhysicalEntity
 {
 public:
 	static Asteroid * generateRandomAsteroid();

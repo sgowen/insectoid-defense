@@ -3,7 +3,7 @@ Insectoid Defense
 
 <img src="http://gowengamedev.com/wp-content/uploads/2014/12/google_play_feature_graphic.png" />
 
-A Sci-Fi Tower Defense game for Android, iOS, and Windows Phone 8.
+A Sci-Fi Tower Defense game for Android, iOS, and Windows Phone 8, and Nintendo 3DS!
 
 This project serves as an excellent template for those wanting to develop cross-platform games for mobile without relying on cross-platform frameworks. It uses precompiler directives to intuitively switch between OpenGL ES and Direct3D rendering. Roughly 90% of the game is written in C++. The other 10% of the game is a reusable wrapper layer written in Java for Android, Objective-C for iOS, and C# for Windows Phone 8.
 
@@ -28,6 +28,21 @@ Thanks goes to <a href="http://www.hirefreelanceartist.com/free-tower-defense-gr
 4. Open the local.properties file and add the following line: ndk.dir=**path to ndk, same as in Android.mk**
 5. Run it!
 
+## Setup Instructions for iOS
+
+After you implement the fix for libpng described above, all you need to do is open the project in Xcode and run it!
+
 ## Setup Instructions for Windows Phone 8
 
 Assuming you already have the Windows Phone 8 sdk installed, just open the project in Visual Studio and run it!
+
+## Setup Instructions for Nintendo 3DS
+
+1. I recommend installing the Homebrew Launcher first (it launches 3dsx files for you, which is nice). You can learn how to do this here: http://smealum.github.io/3ds/
+2. Install NetBeans with C/C++ support.
+3. Follow the tutorial here on how to set up your NetBeans development environment: http://www.3dbrew.org/wiki/Setting_up_Development_Environment, but ignore the part at the bottom (Building homebrew for distribution) if you just plan on accessing your build via the Homebrew Launcher
+4. Download my fork of sf2dlib from https://github.com/GowenGameDevOpenSource/sf2dlib
+5. At the top of the sf2dlib Makefile, add a declaration for AEMSTRO (after DEVKITPRO and DEVKITARM): export AEMSTRO=<Path to aemstro containing the python scripts>
+6. Build sf2dlib
+7. Back in insectoid-defense, add the following line to the top of your Makefile (again after DEVKITPRO and DEVKITARM): export LIBSF2D=<Path to sf2dlib containing the lib and include directories>
+8. Build!

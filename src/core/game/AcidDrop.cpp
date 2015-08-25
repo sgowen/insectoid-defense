@@ -19,7 +19,7 @@
 
 #include <math.h>
 
-AcidDrop::AcidDrop(float x, float y, float width, float height, float velocityConstant, float directionalAngle, Rectangle *destinationBounds, float poisonTime, float poisonToCreepHealthRatio) : DynamicGameObject(x, y, width, height, directionalAngle)
+AcidDrop::AcidDrop(float x, float y, float width, float height, float velocityConstant, float directionalAngle, Rectangle *destinationBounds, float poisonTime, float poisonToCreepHealthRatio) : PhysicalEntity(x, y, width, height, directionalAngle)
 {
 	m_destinationBounds = std::unique_ptr<Rectangle>(destinationBounds);
 	m_fPoisonTime = poisonTime;
@@ -45,11 +45,6 @@ void AcidDrop::update(float deltaTime)
         
 		m_remove = true;
 	}
-}
-
-float AcidDrop::getStateTime()
-{
-	return m_fStateTime;
 }
 
 bool AcidDrop::remove()

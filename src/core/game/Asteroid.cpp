@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Gowen Game Dev. All rights reserved.
 //
 
-#include "pch.h"
 #include "Asteroid.h"
 #include "ScreenUtils.h"
 #include "World.h"
@@ -32,19 +31,19 @@ Asteroid * Asteroid::generateRandomAsteroid()
 	{
 	case 0:
 		x = -2;
-		y = (rand() % (int) SCREEN_HEIGHT) - 3;
+		y = (rand() % (int) GAME_HEIGHT) - 3;
 		break;
 	case 1:
-		x = (rand() % (int) SCREEN_WIDTH) + 1;
-		y = (rand() % 2) == 0 ? SCREEN_HEIGHT + 2 : -2;
+		x = (rand() % (int) GAME_WIDTH) + 1;
+		y = (rand() % 2) == 0 ? GAME_HEIGHT + 2 : -2;
 		break;
 	case 2:
-		x = SCREEN_WIDTH + 2;
-		y = (rand() % (int) SCREEN_HEIGHT) - 2;
+		x = GAME_WIDTH + 2;
+		y = (rand() % (int) GAME_HEIGHT) - 2;
 	}
 
 	Vector2D asteroidPosition(x, y);
-	Vector2D destinationPosition((rand() % (int) SCREEN_WIDTH) + 1, (rand() % (int) SCREEN_HEIGHT) + 1);
+	Vector2D destinationPosition((rand() % (int) GAME_WIDTH) + 1, (rand() % (int) GAME_HEIGHT) + 1);
 	float directionalAngle = destinationPosition.sub(asteroidPosition.getX(), asteroidPosition.getY()).angle();
 
 	int random_asteroid = (rand() % 2);
@@ -52,7 +51,7 @@ Asteroid * Asteroid::generateRandomAsteroid()
 	return new Asteroid(x, y, size, size, speed, directionalAngle, spinDegreesPerSecond, random_asteroid == 0 ? Asteroid_Type::GRAY : Asteroid_Type::BROWN);
 }
 
-Asteroid::Asteroid(float x, float y, float width, float height, float velocityConstant, float directionalAngle, float spinDegreesPerSecond, Asteroid_Type type) : DynamicGameObject (x, y, width, height, 0)
+Asteroid::Asteroid(float x, float y, float width, float height, float velocityConstant, float directionalAngle, float spinDegreesPerSecond, Asteroid_Type type) : PhysicalEntity (x, y, width, height, 0)
 {
 	m_spinDegreesPerSecond = spinDegreesPerSecond;
 

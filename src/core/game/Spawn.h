@@ -9,7 +9,7 @@
 #ifndef __insectoiddefense__Spawn__
 #define __insectoiddefense__Spawn__
 
-#include "GameObject.h"
+#include "PhysicalEntity.h"
 #include "SpawnState.h"
 #include <vector>
 #include <string>
@@ -18,7 +18,7 @@ class Creep;
 struct Node;
 class Circle;
 
-class Spawn : public GameObject
+class Spawn : public PhysicalEntity
 {
 public:
 	Spawn(float x, float y, int levelIndex, int spawnPointIndex);
@@ -31,15 +31,12 @@ public:
 	
 	Spawn_State getState();
 	
-	float getStateTime();
-	
 	int getCreepsSpawned();
 
 private:
 	std::unique_ptr<Circle> m_spawnNextWaveTimer;
 	std::vector<std::string> m_currentWave;
 	Spawn_State m_state;
-	float m_fStateTime;
 	int m_iLevelIndex;
 	int m_iSpawnPointIndex;
 	int m_iWave;

@@ -9,10 +9,10 @@
 #ifndef __insectoiddefense__ShipModule__
 #define __insectoiddefense__ShipModule__
 
-#include "DynamicGameObject.h"
+#include "PhysicalEntity.h"
 #include "ShipModuleType.h"
 
-class ShipModule : public DynamicGameObject
+class ShipModule : public PhysicalEntity
 {
 public: 
 	ShipModule(float x, float y, float width, float height, Ship_Module_Type type);

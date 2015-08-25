@@ -9,10 +9,10 @@
 #ifndef __insectoiddefense__CoreShipModule__
 #define __insectoiddefense__CoreShipModule__
 
-#include "GameObject.h"
+#include "PhysicalEntity.h"
 #include "CoreShipModuleState.h"
 
-class CoreShipModule : public GameObject
+class CoreShipModule : public PhysicalEntity
 {
 public: 
 	CoreShipModule(float x, float y, float width, float height);
@@ -21,7 +21,6 @@ public:
 	bool isAtMaxHealth();
 	bool isGameOver();
 	Core_Ship_Module_State getState();
-	float getStateTime();
 	int getMaxHealth();
 	int getRemainingHealth();
 	
@@ -29,7 +28,6 @@ private:
 	void setState(Core_Ship_Module_State state);
 
 	Core_Ship_Module_State m_state;
-	float m_stateTime;
 	int m_maxHealth;
 	int m_health;
 };

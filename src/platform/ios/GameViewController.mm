@@ -16,13 +16,15 @@
 #import "SaveData.h"
 
 // C++
-#include "game.h"
+#include "IOSOpenGLESGameScreen.h"
+#include "IOS8OpenGLESGameScreen.h"
 #include "ResourceConstants.h"
 #include "DifficultyLevel.h"
 #include "ScreenState.h"
 
 @interface GameViewController ()
 {
+    IOSOpenGLESGameScreen *gameScreen;
     bool _isMinimumWaveRequirementMet;
 }
 
@@ -104,16 +106,37 @@ static bool isRunningiOS8 = false;
     newSize.width = roundf(newSize.width);
     newSize.height = roundf(newSize.height);
     
-    if([Logger isDebugEnabled])
+    [logger debug:[NSString stringWithFormat:@"dimension %f x %f", newSize.width, newSize.height]];
+    
+    [view bindDrawable];
+    
+    CGFloat screenWidth = MAX(newSize.width, newSize.height);
+    CGFloat screenHeight = MIN(newSize.width, newSize.height);
+    CGRect landscapeBounds;
+    if (self.view.frame.size.width < self.view.frame.size.height)
     {
-        [logger debug:[NSString stringWithFormat:@"dimension %f x %f", newSize.width, newSize.height]];
+        landscapeBounds = CGRectMake(self.view.frame.origin.y, self.view.frame.origin.x, self.view.frame.size.height, self.view.frame.size.width);
+    }
+    else
+    {
+        landscapeBounds = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
     }
     
-    init(self.levelIndex, self.difficultyLevel, isRunningiOS8);
-    on_surface_created(newSize.width, newSize.height);
-    on_surface_changed(newSize.width, newSize.height, [UIScreen mainScreen].applicationFrame.size.width, [UIScreen mainScreen].applicationFrame.size.height);
-    on_resume();
+    int pointsWidth = landscapeBounds.size.width;
+    int pointsHeight = landscapeBounds.size.height;
     
+    if(isRunningiOS8)
+    {
+        [logger debug:@"Instantiating IOS8OpenGLESGameScreen"];
+        
+        gameScreen = new IOS8OpenGLESGameScreen(self.levelIndex, self.difficultyLevel, screenWidth, screenHeight, pointsWidth, pointsHeight);
+    }
+    else
+    {
+        [logger debug:@"Instantiating IOSOpenGLESGameScreen"];
+        
+        gameScreen = new IOSOpenGLESGameScreen(self.levelIndex, self.difficultyLevel, screenWidth, screenHeight, pointsWidth, pointsHeight);
+    }
     
     int highWave = [SaveData getHighWaveForDifficultyLevel:self.difficultyLevel andLevelIndex:self.levelIndex];
     _isMinimumWaveRequirementMet = highWave >= [LevelWaveRequirementMapper getWaveRequirementForLevelIndex:self.levelIndex];
@@ -140,39 +163,39 @@ static bool isRunningiOS8 = false;
 {
     UITouch *touch = [touches anyObject];
     CGPoint pos = [touch locationInView: [UIApplication sharedApplication].keyWindow];
-    on_touch_down(pos.x, pos.y);
+    gameScreen->onTouch(DOWN, pos.x, pos.y);
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [touches anyObject];
     CGPoint pos = [touch locationInView: [UIApplication sharedApplication].keyWindow];
-    on_touch_dragged(pos.x, pos.y);
+    gameScreen->onTouch(DRAGGED, pos.x, pos.y);
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [touches anyObject];
     CGPoint pos = [touch locationInView: [UIApplication sharedApplication].keyWindow];
-    on_touch_up(pos.x, pos.y);
+    gameScreen->onTouch(UP, pos.x, pos.y);
 }
 
 #pragma mark <GLKViewControllerDelegate>
 
 - (void)update
 {
-    int screenState = get_state();
+    int screenState = gameScreen->getState();
     switch (screenState)
     {
         case SCREEN_STATE_WAVE_COMPLETED:
             [self onWaveCompleted];
-            clear_state();
+            gameScreen->clearState();
         case SCREEN_STATE_NORMAL:
-            update(self.timeSinceLastUpdate);
+            gameScreen->update(self.timeSinceLastUpdate);
             break;
         case SCREEN_STATE_GAME_OVER:
             [self saveScore];
-            clear_state();
+            gameScreen->clearState();
             break;
         case SCREEN_STATE_EXIT:
             [self dismissViewControllerAnimated:NO completion:nil];
@@ -186,7 +209,7 @@ static bool isRunningiOS8 = false;
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
-    present();
+    gameScreen->render();
     [self handleSound];
     [self handleMusic];
 }
@@ -196,7 +219,7 @@ static bool isRunningiOS8 = false;
 - (void)handleSound
 {
     short soundId;
-    while ((soundId = get_current_sound_id()) > 0)
+    while ((soundId = gameScreen->getCurrentSoundId()) > 0)
     {
         switch (soundId)
         {
@@ -257,7 +280,7 @@ static bool isRunningiOS8 = false;
 - (void)handleMusic
 {
     bool loadedNewTrack = false;
-    short musicId = get_current_music_id();
+    short musicId = gameScreen->getCurrentMusicId();
     switch (musicId)
     {
         case MUSIC_STOP:
@@ -281,8 +304,8 @@ static bool isRunningiOS8 = false;
 
 - (void)onWaveCompleted
 {
-    int wave = get_wave();
-    int levelIndex = get_level_index();
+    int wave = gameScreen->getWave();
+    int levelIndex = gameScreen->getLevelIndex();
     
     if (!_isMinimumWaveRequirementMet && wave >= [LevelWaveRequirementMapper getWaveRequirementForLevelIndex:levelIndex])
     {
@@ -296,10 +319,10 @@ static bool isRunningiOS8 = false;
 
 - (void)saveScore
 {
-    int score = get_score();
-    int wave = get_wave();
-    int difficulty = get_difficulty();
-    int levelIndex = get_level_index();
+    int score = gameScreen->getScore();
+    int wave = gameScreen->getWave();
+    int difficulty = gameScreen->getDifficulty();
+    int levelIndex = gameScreen->getLevelIndex();
     
     [SaveData saveHighScore:score andHighWave:wave forDifficultyLevel:difficulty andLevelIndex:levelIndex];
 }
@@ -311,14 +334,14 @@ static bool isRunningiOS8 = false;
 
 - (void)onResume
 {
-    on_resume();
+    gameScreen->onResume();
 }
 
 - (void)onPause
 {
     [self.bgm stop];
     
-    on_pause();
+    gameScreen->onPause();
     
     [self saveScore];
 }

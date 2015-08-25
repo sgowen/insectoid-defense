@@ -19,7 +19,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-Creep::Creep(float x, float y, float width, float height, float initialSpeed, int maxHealth, int pointValue, int levelIndex, int spawnPointIndex, bool isUsingAltPath) : DynamicGameObject (x, y, width, height, 0)
+Creep::Creep(float x, float y, float width, float height, float initialSpeed, int maxHealth, int pointValue, int levelIndex, int spawnPointIndex, bool isUsingAltPath) : PhysicalEntity (x, y, width, height, 0)
 {
     m_fAlpha = 1.0f;
     m_fRed = 1.0f;
@@ -50,7 +50,7 @@ Creep::Creep(float x, float y, float width, float height, float initialSpeed, in
     m_spawnPointIndex = spawnPointIndex;
     m_isUsingAltPath = isUsingAltPath;
     m_state = ALIVE;
-    m_stateTime = 0;
+    m_fStateTime = 0;
     m_isUsingAltPathOnHullDamage = m_levelIndex == 2 && m_isUsingAltPath == false && (rand() % 2) == 0;
     
     resetBounds(width * SIZE_TO_BOUNDS_RATIO, height * SIZE_TO_BOUNDS_RATIO);
@@ -58,7 +58,7 @@ Creep::Creep(float x, float y, float width, float height, float initialSpeed, in
 
 void Creep::update(float deltaTime)
 {
-    m_stateTime += deltaTime;
+    m_fStateTime += deltaTime;
     
     m_healthBarFrame = m_health * 16 / m_maxHealth - 1;
     m_healthBarFrame = m_healthBarFrame < 0 ? 0 : m_healthBarFrame;
@@ -310,11 +310,6 @@ int Creep::getState()
     return m_state;
 }
 
-float Creep::getStateTime()
-{
-    return m_stateTime;
-}
-
 int Creep::getPointValue()
 {
     return m_pointValue;
@@ -390,7 +385,7 @@ void Creep::displayHealthBar()
 void Creep::setState(int newState)
 {
     m_state = FlagUtil::setFlag(m_state, newState);
-    m_stateTime = 0;
+    m_fStateTime = 0;
 }
 
 // Private

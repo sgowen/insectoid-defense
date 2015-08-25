@@ -9,8 +9,8 @@
 #ifndef __insectoiddefense__Missile__
 #define __insectoiddefense__Missile__
 
-#include "pch.h"
-#include "DynamicGameObject.h"
+
+#include "PhysicalEntity.h"
 #include "ExplosionType.h"
 
 #include <vector>
@@ -20,14 +20,12 @@ class Explosion;
 class Circle;
 class Creep;
 
-class Missile : public DynamicGameObject
+class Missile : public PhysicalEntity
 {
 public:
 	Missile(float x, float y, float width, float height, float velocityConstant, float directionalAngle, int damage, Explosion_Type explosionType, Creep *target);
 
 	void update(float deltaTime, std::vector<std::unique_ptr<Creep>> &creeps, std::vector<std::unique_ptr<Explosion>> &explosions);
-
-	float getStateTime();
 
 	bool remove();
 
@@ -36,7 +34,6 @@ private:
 	Explosion_Type m_explosionType;
 	float m_fVelocityConstant;
 	float m_fBlastRadius;
-	float m_fStateTime;
 	int m_iDamage;
 	bool m_isCreepDead;
 	bool m_remove;

@@ -9,7 +9,7 @@
 #ifndef __insectoiddefense__Tower__
 #define __insectoiddefense__Tower__
 
-#include "GameObject.h"
+#include "PhysicalEntity.h"
 #include "TowerState.h"
 #include "TowerType.h"
 #include "Color.h"
@@ -20,7 +20,7 @@
 class Creep;
 class Circle;
 
-class Tower : public GameObject
+class Tower : public PhysicalEntity
 {
 public:
 	static Color getUpgradeCursorColor()

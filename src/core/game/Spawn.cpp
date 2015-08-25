@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Gowen Game Dev. All rights reserved.
 //
 
-#include "pch.h"
 #include "Spawn.h"
 #include "World.h"
 #include "VectorUtils.h"
@@ -31,7 +30,7 @@
 #include "Rectangle.h"
 #include "GameConstants.h"
 
-Spawn::Spawn(float x, float y, int levelIndex, int spawnPointIndex) : GameObject (x, y, 0.90f, 0.90f, 0)
+Spawn::Spawn(float x, float y, int levelIndex, int spawnPointIndex) : PhysicalEntity (x, y, 0.90f, 0.90f, 0)
 {
 	m_spawnNextWaveTimer = std::unique_ptr<Circle>(new Circle(x, y, 0.4f));
 	
@@ -91,11 +90,6 @@ Circle& Spawn::getSpawnNextWaveTimer()
 Spawn_State Spawn::getState()
 {
 	return m_state;
-}
-	
-float Spawn::getStateTime()
-{
-	return m_fStateTime;
 }
 
 int Spawn::getCreepsSpawned()

@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Gowen Game Dev. All rights reserved.
 //
 
-#include "pch.h"
 #include "RedCreep.h"
 #include "Vector2D.h"
 #include "Rectangle.h"

@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Gowen Game Dev. All rights reserved.
 //
 
-#include "pch.h"
 #include "CreepBodyPart.h"
 #include "Rectangle.h"
 #include "Vector2D.h"
@@ -14,7 +13,7 @@
 
 #include <math.h>
 
-CreepBodyPart::CreepBodyPart(float x, float y, float width, float height, float initialVelocity, float angle, float directionalAngle, float alpha, float red, float green, float blue, Creep_Body_Part_Type type) : DynamicGameObject (x, y, width, height, angle)
+CreepBodyPart::CreepBodyPart(float x, float y, float width, float height, float initialVelocity, float angle, float directionalAngle, float alpha, float red, float green, float blue, Creep_Body_Part_Type type) : PhysicalEntity (x, y, width, height, angle)
 {
 	m_type = type;
 	m_fAlpha = alpha;

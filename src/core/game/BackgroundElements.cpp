@@ -6,9 +6,8 @@
 //  Copyright (c) 2014 Gowen Game Dev. All rights reserved.
 //
 
-#include "pch.h"
 #include "BackgroundElements.h"
-#include "GameObject.h"
+#include "PhysicalEntity.h"
 #include "Asteroid.h"
 #include "ShipModule.h"
 #include "CoreShipModule.h"
@@ -25,15 +24,15 @@
 
 BackgroundElements::BackgroundElements(int levelIndex)
 {
-	m_leftBackground = std::unique_ptr<GameObject>(new GameObject(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT, 0));
-	m_rightBackground = std::unique_ptr<GameObject>(new GameObject(SCREEN_WIDTH / 2 + SCREEN_WIDTH, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT, 0));
+	m_leftBackground = std::unique_ptr<PhysicalEntity>(new PhysicalEntity(GAME_WIDTH / 2, GAME_HEIGHT / 2, GAME_WIDTH, GAME_HEIGHT, 0));
+	m_rightBackground = std::unique_ptr<PhysicalEntity>(new PhysicalEntity(GAME_WIDTH / 2 + GAME_WIDTH, GAME_HEIGHT / 2, GAME_WIDTH, GAME_HEIGHT, 0));
 
 	m_asteroids.push_back(std::unique_ptr<Asteroid>(Asteroid::generateRandomAsteroid()));
 
 	initCoreShipForLevelIndex(levelIndex);
 	initShipModulesForLevelIndex(levelIndex);
 
-	m_towerSelectionMenuBounds = std::unique_ptr<Rectangle>(new Rectangle(14.31f, 0, 1.59f, SCREEN_HEIGHT));
+	m_towerSelectionMenuBounds = std::unique_ptr<Rectangle>(new Rectangle(14.31f, 0, 1.59f, GAME_HEIGHT));
 	m_sellTowerButton = std::unique_ptr<TowerOptionButton>(new TowerOptionButton(14.40f, 0.50f, "SELL", 0, 1, 0, 1, 1, 1, 1, 1));
 	m_upgradeTowerButton = std::unique_ptr<TowerOptionButton>(new TowerOptionButton(14.40f, 2.00f, "UPGRADE", 1, 0, 0, 1, 1, 1, 1, 1));
 
@@ -59,12 +58,12 @@ void BackgroundElements::update(float deltaTime)
 	if(m_isRightBackgroundFirst)
 	{
 		m_rightBackground->getPosition().sub(m_backgroundScrollingSpeed * deltaTime, 0);
-		m_leftBackground->getPosition().set(m_rightBackground->getPosition().getX() + SCREEN_WIDTH, SCREEN_HEIGHT / 2);
+		m_leftBackground->getPosition().set(m_rightBackground->getPosition().getX() + GAME_WIDTH, GAME_HEIGHT / 2);
 	}
 	else
 	{
 		m_leftBackground->getPosition().sub(m_backgroundScrollingSpeed * deltaTime, 0);
-		m_rightBackground->getPosition().set(m_leftBackground->getPosition().getX() + SCREEN_WIDTH, SCREEN_HEIGHT / 2);
+		m_rightBackground->getPosition().set(m_leftBackground->getPosition().getX() + GAME_WIDTH, GAME_HEIGHT / 2);
 	}
 
 	resetBackgroundIfNecessary();
@@ -148,12 +147,12 @@ TowerCursor & BackgroundElements::getSelectedTowerCursor()
 	return *m_selectedTowerCursor;
 }
 
-GameObject & BackgroundElements::getLeftBackground()
+PhysicalEntity & BackgroundElements::getLeftBackground()
 {
 	return *m_leftBackground;
 }
 
-GameObject & BackgroundElements::getRightBackground()
+PhysicalEntity & BackgroundElements::getRightBackground()
 {
 	return *m_rightBackground;
 }
@@ -211,16 +210,16 @@ void BackgroundElements::resetSelectedTowerCursor()
 
 void BackgroundElements::resetBackgroundIfNecessary()
 {
-	if (m_leftBackground->getPosition().getX() < (-SCREEN_WIDTH / 2))
+	if (m_leftBackground->getPosition().getX() < (-GAME_WIDTH / 2))
 	{
-		m_leftBackground->getPosition().set(SCREEN_WIDTH / 2 + SCREEN_WIDTH, SCREEN_HEIGHT / 2);
-		m_rightBackground->getPosition().set(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+		m_leftBackground->getPosition().set(GAME_WIDTH / 2 + GAME_WIDTH, GAME_HEIGHT / 2);
+		m_rightBackground->getPosition().set(GAME_WIDTH / 2, GAME_HEIGHT / 2);
 		m_isRightBackgroundFirst = true;
 	}
-	else if (m_rightBackground->getPosition().getX() < (-SCREEN_WIDTH / 2))
+	else if (m_rightBackground->getPosition().getX() < (-GAME_WIDTH / 2))
 	{
-		m_rightBackground->getPosition().set(SCREEN_WIDTH / 2 + SCREEN_WIDTH, SCREEN_HEIGHT / 2);
-		m_leftBackground->getPosition().set(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+		m_rightBackground->getPosition().set(GAME_WIDTH / 2 + GAME_WIDTH, GAME_HEIGHT / 2);
+		m_leftBackground->getPosition().set(GAME_WIDTH / 2, GAME_HEIGHT / 2);
 		m_isRightBackgroundFirst = false;
 	}
 }

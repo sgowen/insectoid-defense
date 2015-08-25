@@ -9,7 +9,7 @@
 #ifndef __insectoiddefense__LazerBeam__
 #define __insectoiddefense__LazerBeam__
 
-#include "pch.h"
+
 #include "Color.h"
 
 #include <vector>

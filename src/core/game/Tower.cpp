@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Gowen Game Dev. All rights reserved.
 //
 
-#include "pch.h"
 #include "Tower.h"
 #include "TowerCostMapper.h"
 #include "OverlapTester.h"
@@ -18,7 +17,7 @@
 #include "GameListener.h"
 #include "ResourceConstants.h"
 
-Tower::Tower(Tower_Type towerType, float x, float y, float width, float height, float radius, float upgradeTime, int upgradeCost) : GameObject(x, y, width, height, 0)
+Tower::Tower(Tower_Type towerType, float x, float y, float width, float height, float radius, float upgradeTime, int upgradeCost) : PhysicalEntity(x, y, width, height, 0)
 {
 	m_attackRadius = std::unique_ptr<Circle>(new Circle(x, y, radius));
 	m_upgradeCursor = std::unique_ptr<Circle>(new Circle(x, y, 0.4f));

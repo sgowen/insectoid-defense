@@ -9,8 +9,8 @@
 #ifndef __insectoiddefense__IceBlast__
 #define __insectoiddefense__IceBlast__
 
-#include "pch.h"
-#include "GameObject.h"
+
+#include "PhysicalEntity.h"
 
 #include <vector>
 #include <memory>
@@ -18,7 +18,7 @@
 class Creep;
 class Circle;
 
-class IceBlast : public GameObject
+class IceBlast : public PhysicalEntity
 {
 public:
 	IceBlast(float x, float y);
@@ -31,8 +31,6 @@ public:
 
 	bool isBlasting();
 
-	float getStateTime();
-
 	int getIceBlastID();
 
 	virtual float getWidth();
@@ -42,7 +40,6 @@ public:
 private:
 	std::unique_ptr<Circle> m_blastRadius;
 	float m_fBlastDisplayRadius;
-	float m_fStateTime;
 	float m_fFrozenTime;
 	int m_iBlastDamage;
 	int m_iFreezeChance;

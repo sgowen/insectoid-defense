@@ -1,9 +1,8 @@
-#include "pch.h"
 #include "CoreShipModule.h"
 #include "Vector2D.h"
 #include "Rectangle.h"
 
-CoreShipModule::CoreShipModule(float x, float y, float width, float height) : GameObject (x, y, width, height, 0)
+CoreShipModule::CoreShipModule(float x, float y, float width, float height) : PhysicalEntity (x, y, width, height, 0)
 {
 	m_maxHealth = 10;
 	m_health = m_maxHealth;
@@ -13,9 +12,9 @@ CoreShipModule::CoreShipModule(float x, float y, float width, float height) : Ga
 
 void CoreShipModule::update(float deltaTime)
 {
-	m_stateTime += deltaTime;
+	m_fStateTime += deltaTime;
 
-	if(m_state == Core_Ship_Module_State::TAKING_DAMAGE && m_stateTime > 0.25f)
+	if(m_state == Core_Ship_Module_State::TAKING_DAMAGE && m_fStateTime > 0.25f)
 	{
 		setState(Core_Ship_Module_State::HAPPY);
 	}
@@ -42,11 +41,6 @@ Core_Ship_Module_State CoreShipModule::getState()
 	return m_state;
 }
 
-float CoreShipModule::getStateTime()
-{
-	return m_stateTime;
-}
-
 int CoreShipModule::getMaxHealth()
 {
 	return m_maxHealth;
@@ -60,5 +54,5 @@ int CoreShipModule::getRemainingHealth()
 void CoreShipModule::setState(Core_Ship_Module_State state)
 {
 	m_state = state;
-	m_stateTime = 0;
+	m_fStateTime = 0;
 }

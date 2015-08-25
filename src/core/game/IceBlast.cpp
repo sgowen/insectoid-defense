@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Gowen Game Dev. All rights reserved.
 //
 
-#include "pch.h"
 #include "IceBlast.h"
 #include "Vector2D.h"
 #include "Creep.h"
@@ -14,7 +13,7 @@
 #include "Circle.h"
 #include "Rectangle.h"
 
-IceBlast::IceBlast(float x, float y) : GameObject (x, y, 3, 3, 0)
+IceBlast::IceBlast(float x, float y) : PhysicalEntity (x, y, 3, 3, 0)
 {
 	m_blastRadius = std::unique_ptr<Circle>(new Circle(x, y, 1.5f));
 	m_fBlastDisplayRadius = 3;
@@ -74,11 +73,6 @@ void IceBlast::blast()
 bool IceBlast::isBlasting()
 {
 	return m_isBlasting;
-}
-
-float IceBlast::getStateTime()
-{
-	return m_fStateTime;
 }
 
 int IceBlast::getIceBlastID()

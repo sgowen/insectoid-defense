@@ -9,8 +9,8 @@
 #ifndef __insectoiddefense__Explosion__
 #define __insectoiddefense__Explosion__
 
-#include "pch.h"
-#include "GameObject.h"
+
+#include "PhysicalEntity.h"
 #include "ExplosionType.h"
 
 #include <vector>
@@ -19,7 +19,7 @@
 class Creep;
 class Circle;
 
-class Explosion : public GameObject
+class Explosion : public PhysicalEntity
 {
 public:
 	Explosion(float x, float y, float blastRadius, Explosion_Type type, int damageRate);
@@ -30,8 +30,6 @@ public:
 	
 	Explosion_Type getType();
 	
-	float getStateTime();
-	
 	bool remove();
 
 private:
@@ -39,7 +37,6 @@ private:
 	Explosion_Type m_type;
 	float m_fExplosionTime;
 	float m_fDamageTime;
-	float m_fStateTime;
 	float m_fFireTime;
 	int m_iDamageRate;
 	int m_iDamage;

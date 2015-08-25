@@ -17,7 +17,7 @@ class Vector2D;
 class CoreShipModule;
 class ShipModule;
 class Asteroid;
-class GameObject;
+class PhysicalEntity;
 class TowerCursor;
 class Rectangle;
 class TowerOptionButton;
@@ -34,8 +34,8 @@ public:
 	void setSelectedTowerPosition(Vector2D &position);
 	bool isTowerSelected();
 	TowerCursor &getSelectedTowerCursor();
-	GameObject & getLeftBackground();
-	GameObject & getRightBackground();
+	PhysicalEntity & getLeftBackground();
+	PhysicalEntity & getRightBackground();
 	void setUpgradeSellMenuShowing(bool isUpgradeSellMenuShowing);
 	bool isUpgradeSellMenuShowing();
 	std::list<std::unique_ptr<Asteroid>> & getAsteroids();
@@ -46,8 +46,8 @@ public:
 	TowerOptionButton & getUpgradeTowerButton();
 
 private:
-	std::unique_ptr<GameObject> m_leftBackground;
-	std::unique_ptr<GameObject> m_rightBackground;
+	std::unique_ptr<PhysicalEntity> m_leftBackground;
+	std::unique_ptr<PhysicalEntity> m_rightBackground;
 	std::list<std::unique_ptr<Asteroid>> m_asteroids;
 	float m_fTimeSinceLastAsteroidSpawned;
 	std::list<std::unique_ptr<ShipModule>> m_shipModules;

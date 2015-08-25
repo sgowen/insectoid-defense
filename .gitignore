@@ -37,3 +37,20 @@ ARM/
 Debug/
 Release/
 Generated Files/
+ipch/
+
+# NetBeans
+private/
+build/
+nbbuild/
+nbproject/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+.nb-gradle/
+
+# 3DS Build Artifacts
+*.elf
+*.smdh
+*.3dsx

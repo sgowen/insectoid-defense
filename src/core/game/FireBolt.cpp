@@ -16,7 +16,7 @@
 
 #include <math.h>
 
-FireBolt::FireBolt(float x, float y, float width, float height, float velocityConstant, float directionalAngle, float totalBurnTime, int damage) : DynamicGameObject(x, y, width, height, directionalAngle)
+FireBolt::FireBolt(float x, float y, float width, float height, float velocityConstant, float directionalAngle, float totalBurnTime, int damage) : PhysicalEntity(x, y, width, height, directionalAngle)
 {
 	m_fTotalBurnTime = totalBurnTime;
 	m_fTimeToDamageFromBurn = 0.1f;
@@ -89,11 +89,6 @@ void FireBolt::update(float deltaTime, std::vector<std::unique_ptr<Creep>> &cree
 			m_remove = true;
 		}
 	}
-}
-
-float FireBolt::getStateTime()
-{
-	return m_fStateTime;
 }
 
 Fire_Bolt_State FireBolt::getFireBoltState()

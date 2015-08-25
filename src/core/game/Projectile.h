@@ -9,8 +9,8 @@
 #ifndef __insectoiddefense__Projectile__
 #define __insectoiddefense__Projectile__
 
-#include "pch.h"
-#include "DynamicGameObject.h"
+
+#include "PhysicalEntity.h"
 #include "ProjectileState.h"
 #include "Color.h"
 
@@ -19,7 +19,7 @@
 
 class Creep;
 
-class Projectile : public DynamicGameObject
+class Projectile : public PhysicalEntity
 {
 public:
 	Projectile(float x, float y, float width, float height, float velocityConstant, float directionalAngle, int damage, bool isSticky);
@@ -32,8 +32,6 @@ public:
 
 	Color getColor();
 
-	float getStateTime();
-
 	bool remove();
 
 private:
@@ -44,7 +42,6 @@ private:
 	float m_fRed;
 	float m_fGreen;
 	float m_fBlue;
-	float m_fStateTime;
 	int m_iZapDamage;
 	int m_iDamage;
 	bool m_isSticky;

@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Gowen Game Dev. All rights reserved.
 //
 
-#include "pch.h"
 #include "PoisonTower.h"
 #include "Circle.h"
 #include "Creep.h"

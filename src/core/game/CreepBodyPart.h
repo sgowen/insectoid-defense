@@ -9,11 +9,11 @@
 #ifndef __insectoiddefense__CreepBodyPart__
 #define __insectoiddefense__CreepBodyPart__
 
-#include "DynamicGameObject.h"
+#include "PhysicalEntity.h"
 #include "CreepBodyPartType.h"
 #include "Color.h"
 
-class CreepBodyPart : public DynamicGameObject
+class CreepBodyPart : public PhysicalEntity
 {
 public:
 	CreepBodyPart(float x, float y, float width, float height, float initialVelocity, float angle, float directionalAngle, float alpha, float red, float green, float blue, Creep_Body_Part_Type type);

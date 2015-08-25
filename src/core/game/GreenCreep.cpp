@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Gowen Game Dev. All rights reserved.
 //
 
-#include "pch.h"
 #include "GreenCreep.h"
 #include "FlagUtil.h"
 #include "Vector2D.h"

@@ -9,8 +9,8 @@
 #ifndef __insectoiddefense__ElectricBolt__
 #define __insectoiddefense__ElectricBolt__
 
-#include "pch.h"
-#include "DynamicGameObject.h"
+
+#include "PhysicalEntity.h"
 #include "Color.h"
 
 #include <vector>
@@ -20,7 +20,7 @@ class Creep;
 class WorldPlatform;
 class Projectile;
 
-class ElectricBolt : public DynamicGameObject
+class ElectricBolt : public PhysicalEntity
 {
 public:
 	ElectricBolt(float x, float y, float width, float height, float velocityConstant, float directionalAngle, int damage, int fadeTimeSeconds);
@@ -28,8 +28,6 @@ public:
 	void update(float deltaTime, std::vector<std::unique_ptr<Creep>> &creeps, std::vector<std::unique_ptr<WorldPlatform>> &platforms, std::vector<std::unique_ptr<Projectile>> &projectiles);
 	
     Color getColor();
-	
-	float getStateTime();
 	
 	bool remove();
 
@@ -39,7 +37,6 @@ private:
 	float m_fGreen;
 	float m_fBlue;
 	float m_fDamageTime;
-	float m_fStateTime;
 	float m_fFireTime;
 	int m_iFadeTimeSeconds;
 	int m_iDamage;

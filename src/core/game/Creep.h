@@ -9,8 +9,7 @@
 #ifndef __insectoiddefense__Creep__
 #define __insectoiddefense__Creep__
 
-#include "pch.h"
-#include "DynamicGameObject.h"
+#include "PhysicalEntity.h"
 #include "DamageType.h"
 #include "CreepType.h"
 #include "CreepBodyPartType.h"
@@ -22,7 +21,7 @@
 class CreepBodyPart;
 struct Node;
 
-class Creep : public DynamicGameObject
+class Creep : public PhysicalEntity
 {
 public:
     virtual Creep_Type getCreepType() = 0;
@@ -62,8 +61,6 @@ public:
     bool isHealthBarShowing();
     
     int getState();
-    
-    float getStateTime();
     
     int getPointValue();
     
@@ -116,7 +113,6 @@ private:
     int m_state;
     float m_speed;
     std::unique_ptr<Vector2D> m_rollOverDistance;
-    float m_stateTime;
     float m_timeToShowHealthBar;
     float m_frozenTime;
     float m_burnTime;

@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Gowen Game Dev. All rights reserved.
 //
 
-#include "pch.h"
 #include "Explosion.h"
 #include "Vector2D.h"
 #include "OverlapTester.h"
@@ -14,7 +13,7 @@
 #include "Creep.h"
 #include "Rectangle.h"
 
-Explosion::Explosion(float x, float y, float blastRadius, Explosion_Type type, int damageRate) : GameObject(x, y, blastRadius, blastRadius, 0)
+Explosion::Explosion(float x, float y, float blastRadius, Explosion_Type type, int damageRate) : PhysicalEntity(x, y, blastRadius, blastRadius, 0)
 {
 	m_damageRadius = std::unique_ptr<Circle>(new Circle(x, x, blastRadius / 4));
 	m_type = type;
@@ -61,11 +60,6 @@ Circle & Explosion::getDamageRadius()
 Explosion_Type Explosion::getType()
 {
 	return m_type;
-}
-
-float Explosion::getStateTime()
-{
-	return m_fStateTime;
 }
 
 bool Explosion::remove()

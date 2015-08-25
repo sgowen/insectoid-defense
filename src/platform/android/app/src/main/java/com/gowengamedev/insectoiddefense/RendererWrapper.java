@@ -161,7 +161,7 @@ public final class RendererWrapper implements Renderer
                 break;
         }
 
-        present();
+        render();
         handleSound();
         handleMusic();
 
@@ -360,7 +360,7 @@ public final class RendererWrapper implements Renderer
 
     private static native void update(float deltaTime);
 
-    private static native void present();
+    private static native void render();
 
     private static native void on_touch_down(float normalized_x, float normalized_y);
 

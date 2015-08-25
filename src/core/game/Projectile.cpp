@@ -22,7 +22,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-Projectile::Projectile(float x, float y, float width, float height, float velocityConstant, float directionalAngle, int damage, bool isSticky) : DynamicGameObject (x, y, width, height, directionalAngle)
+Projectile::Projectile(float x, float y, float width, float height, float velocityConstant, float directionalAngle, int damage, bool isSticky) : PhysicalEntity (x, y, width, height, directionalAngle)
 {
 	m_fAlpha = 1;
 	m_fRed = 1;
@@ -107,11 +107,6 @@ Color Projectile::getColor()
 {
 	Color color = Color(m_fRed, m_fGreen, m_fBlue, m_fAlpha);
 	return color;
-}
-
-float Projectile::getStateTime()
-{
-	return m_fStateTime;
 }
 
 bool Projectile::remove()

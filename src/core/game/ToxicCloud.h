@@ -9,8 +9,8 @@
 #ifndef __insectoiddefense__ToxicCloud__
 #define __insectoiddefense__ToxicCloud__
 
-#include "pch.h"
-#include "GameObject.h"
+
+#include "PhysicalEntity.h"
 #include "ToxicCloudState.h"
 #include "Color.h"
 
@@ -20,7 +20,7 @@
 class Creep;
 class Circle;
 
-class ToxicCloud : public GameObject
+class ToxicCloud : public PhysicalEntity
 {
 public:
 	ToxicCloud(float x, float y, float initialRadius, float endRadius, float poisonTime, float poisonToCreepHealthRatio);

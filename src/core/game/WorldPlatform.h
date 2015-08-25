@@ -9,12 +9,12 @@
 #ifndef __insectoiddefense__WorldPlatform__
 #define __insectoiddefense__WorldPlatform__
 
-#include "GameObject.h"
+#include "PhysicalEntity.h"
 #include "WorldPlatformType.h"
 
 class Tower;
 
-class WorldPlatform : public GameObject
+class WorldPlatform : public PhysicalEntity
 {
 public:
 	WorldPlatform(float x, float y, World_Platform_Type type);

@@ -9,10 +9,10 @@
 #ifndef __insectoiddefense__ProjectileParticle__
 #define __insectoiddefense__ProjectileParticle__
 
-#include "DynamicGameObject.h"
+#include "PhysicalEntity.h"
 #include "Color.h"
 
-class ProjectileParticle : public DynamicGameObject
+class ProjectileParticle : public PhysicalEntity
 {
 public:
 	ProjectileParticle(float x, float y, float width, float height, float velocityConstant, float directionalAngle);
@@ -21,8 +21,6 @@ public:
 
 	Color getColor();
 
-	float getStateTime();
-
 	bool remove();
 
 private:
@@ -30,7 +28,6 @@ private:
 	float m_fRed;
 	float m_fGreen;
 	float m_fBlue;
-	float m_fStateTime;
 	bool m_remove;
 
 	void setMovementPhysics(float directionalAngle, float initialVelocity, float friction);

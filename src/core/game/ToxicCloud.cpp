@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Gowen Game Dev. All rights reserved.
 //
 
-#include "pch.h"
 #include "ToxicCloud.h"
 #include "Circle.h"
 #include "Creep.h"
@@ -14,7 +13,7 @@
 #include "Rectangle.h"
 #include "OverlapTester.h"
 
-ToxicCloud::ToxicCloud(float x, float y, float initialRadius, float endRadius, float poisonTime, float poisonToCreepHealthRatio) : GameObject (x, y, initialRadius, initialRadius, 0)
+ToxicCloud::ToxicCloud(float x, float y, float initialRadius, float endRadius, float poisonTime, float poisonToCreepHealthRatio) : PhysicalEntity (x, y, initialRadius, initialRadius, 0)
 {
 	m_radius = std::unique_ptr<Circle>(new Circle(x, y, initialRadius));
 	m_fAlpha = 0.4f;
