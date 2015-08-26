@@ -30,42 +30,44 @@ class Renderer
 {
 public:
     Renderer();
-    
+
     virtual void clearScreenWithColor(float r, float g, float b, float a) = 0;
-    
+
     virtual void beginFrame() = 0;
-    
+
     virtual void endFrame() = 0;
 
-	virtual void cleanUp() = 0;
-    
+    virtual void cleanUp() = 0;
+
     void renderBackground(BackgroundElements &backgroundElements);
-    
+
     void renderBackgroundOverlay(BackgroundElements &backgroundElements, TimeButton &timeButton);
-    
+
     void renderWorldAndTouchCursor(World &world, TouchCursor &touchCursor);
-    
+
     void renderTowerMenu(BackgroundElements &backgroundElements);
-    
+
     void renderText(Text &text);
-    
+
     void renderDialog(Dialog &dialog);
     
+    TextureWrapper &getTopLevelUiTexture();
+
 protected:
     std::unique_ptr<SpriteBatcher> m_spriteBatcher;
     std::unique_ptr<RectangleBatcher> m_rectangleBatcher;
     std::unique_ptr<LineBatcher> m_lineBatcher;
     std::unique_ptr<CircleBatcher> m_circleBatcher;
-    
+
     std::unique_ptr<TextureWrapper> m_backgroundTexture;
     std::unique_ptr<TextureWrapper> m_creepsTexture;
     std::unique_ptr<TextureWrapper> m_spawnPlatformsProjectilesTowersTexture;
     std::unique_ptr<TextureWrapper> m_looseObjectsTexture;
     std::unique_ptr<TextureWrapper> m_topLevelUiTexture;
-    
+
 private:
-	std::unique_ptr<Font> m_font;
-    
+    std::unique_ptr<Font> m_font;
+
     void renderPhysicalEntity(PhysicalEntity &go, TextureRegion tr);
 };
 

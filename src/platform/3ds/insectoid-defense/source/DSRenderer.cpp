@@ -1,6 +1,6 @@
 //
 //  DSRenderer.cpp
-//  tappyplane
+//  insectoid-defense
 //
 //  Created by Stephen Gowen on 8/20/15.
 //  Copyright (c) 2015 Gowen Game Dev. All rights reserved.
@@ -70,14 +70,12 @@ sf2d_texture *spawnPlatformsProjectilesTowersTex;
 sf2d_texture *looseObjectsTex;
 sf2d_texture *topLevelUiTex;
 
-DSRenderer::DSRenderer(gfxScreen_t screen, int screenWidth, int screenHeight) : Renderer()
+DSRenderer::DSRenderer(gfxScreen_t screen, int screenWidth, int screenHeight) : Renderer(), m_screen(screen)
 {
     m_spriteBatcher = std::unique_ptr<DSSpriteBatcher>(new DSSpriteBatcher(screen, screenWidth, screenHeight));
     m_rectangleBatcher = std::unique_ptr<DSRectangleBatcher>(new DSRectangleBatcher(screen, screenWidth, screenHeight, false));
     m_lineBatcher = std::unique_ptr<DSLineBatcher>(new DSLineBatcher(screen, screenWidth, screenHeight));
     m_circleBatcher = std::unique_ptr<DSCircleBatcher>(new DSCircleBatcher());
-
-    sf2d_init(GAME_WIDTH, GAME_HEIGHT, GAME_WIDTH, GAME_HEIGHT);
 
     backgroundTex = sf2d_create_texture_mem_RGBA8(background.pixel_data, background.width, background.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
     creepsTex = sf2d_create_texture_mem_RGBA8(creeps.pixel_data, creeps.width, creeps.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
@@ -104,7 +102,7 @@ void DSRenderer::clearScreenWithColor(float r, float g, float b, float a)
 
 void DSRenderer::beginFrame()
 {
-    sf2d_start_frame(GFX_BOTTOM, GFX_LEFT);
+    sf2d_start_frame(m_screen, GFX_LEFT);
 }
 
 void DSRenderer::endFrame()
@@ -121,6 +119,4 @@ void DSRenderer::cleanUp()
     sf2d_free_texture(spawnPlatformsProjectilesTowersTex);
     sf2d_free_texture(looseObjectsTex);
     sf2d_free_texture(topLevelUiTex);
-
-    sf2d_fini();
 }

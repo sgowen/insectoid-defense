@@ -1,6 +1,6 @@
 //
 //  DSGameScreen.h
-//  tappyplane
+//  insectoid-defense
 //
 //  Created by Stephen Gowen on 8/20/15.
 //  Copyright (c) 2015 Gowen Game Dev. All rights reserved.
@@ -10,6 +10,8 @@
 #define __tappyplane__DSGameScreen__
 
 #include "GameScreen.h"
+
+class TopScreenRenderer;
 
 class DSGameScreen : public GameScreen
 {
@@ -22,6 +24,10 @@ public:
 
     virtual void platformPause();
     
+    virtual void init();
+    
+    virtual void render();
+    
     void exit();
 
 private:
@@ -29,6 +35,7 @@ private:
     int m_iTopScreenHeight;
     int m_iBottomScreenWidth;
     int m_iBottomScreenHeight;
+    TopScreenRenderer *topScreenRenderer;
 };
 
 #endif /* defined(__tappyplane__DSGameScreen__) */

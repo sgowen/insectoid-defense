@@ -1,6 +1,6 @@
 //
 //  DSRenderer.h
-//  tappyplane
+//  insectoid-defense
 //
 //  Created by Stephen Gowen on 8/20/15.
 //  Copyright (c) 2015 Gowen Game Dev. All rights reserved.
@@ -27,6 +27,9 @@ public:
     virtual void endFrame();
 
     virtual void cleanUp();
+    
+private:
+    gfxScreen_t m_screen;
 };
 
 #endif /* defined(__tappyplane__DSRenderer__) */

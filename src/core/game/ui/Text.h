@@ -15,38 +15,42 @@
 class Text
 {
 public:
-	Text(std::string text, float x, float y, float width, float height, float red, float green, float blue, float alpha);
+    Text(std::string text, float x, float y, float width, float height, float red, float green, float blue, float alpha);
 
-	std::string getText();
+    std::string getText();
 
-	void setText(std::string text);
+    void setText(std::string text);
 
-	float getX();
+    float getX();
 
-	void setX(float x);
+    void setX(float x);
 
-	float getY();
+    float getY();
 
-	void setY(float y);
+    void setY(float y);
 
-	float getWidth();
+    float getWidth();
 
-	float getHeight();
+    void setWidth(float width);
+
+    float getHeight();
+
+    void setHeight(float height);
 
     Color getColor();
 
-	void setColor(float red, float green, float blue, float alpha);
+    void setColor(float red, float green, float blue, float alpha);
 
 private:
-	std::string m_strText;
-	float m_fX;
-	float m_fY;
-	float m_fWidth;
-	float m_fHeight;
-	float m_fAlpha;
-	float m_fRed;
-	float m_fGreen;
-	float m_fBlue;
+    std::string m_strText;
+    float m_fX;
+    float m_fY;
+    float m_fWidth;
+    float m_fHeight;
+    float m_fAlpha;
+    float m_fRed;
+    float m_fGreen;
+    float m_fBlue;
 };
 
 #endif /* defined(__insectoiddefense__Text__) */
