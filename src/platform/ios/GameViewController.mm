@@ -7,7 +7,6 @@
 //
 
 #import "GameViewController.h"
-#import "Logger.h"
 #import "Music.h"
 #import "Sound.h"
 #import "GGDDeviceUtil.h"
@@ -51,12 +50,10 @@
 
 @implementation GameViewController
 
-static Logger *logger = nil;
 static bool isRunningiOS8 = false;
 
 + (void)initialize
 {
-    logger = [[Logger alloc] initWithClass:[GameViewController class]];
     isRunningiOS8 = SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0");
 }
 
@@ -67,7 +64,7 @@ static bool isRunningiOS8 = false;
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
     if (!self.context)
     {
-        [logger error:@"Failed to create ES context"];
+        NSLog(@"Failed to create ES context");
     }
     
     GLKView *view = (GLKView *)self.view;
@@ -106,36 +103,19 @@ static bool isRunningiOS8 = false;
     newSize.width = roundf(newSize.width);
     newSize.height = roundf(newSize.height);
     
-    [logger debug:[NSString stringWithFormat:@"dimension %f x %f", newSize.width, newSize.height]];
+    NSLog(@"dimension %f x %f", newSize.width, newSize.height);
     
     [view bindDrawable];
     
-    CGFloat screenWidth = MAX(newSize.width, newSize.height);
-    CGFloat screenHeight = MIN(newSize.width, newSize.height);
-    CGRect landscapeBounds;
-    if (self.view.frame.size.width < self.view.frame.size.height)
-    {
-        landscapeBounds = CGRectMake(self.view.frame.origin.y, self.view.frame.origin.x, self.view.frame.size.height, self.view.frame.size.width);
-    }
-    else
-    {
-        landscapeBounds = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
-    }
-    
-    int pointsWidth = landscapeBounds.size.width;
-    int pointsHeight = landscapeBounds.size.height;
-    
     if(isRunningiOS8)
     {
-        [logger debug:@"Instantiating IOS8OpenGLESGameScreen"];
-        
-        gameScreen = new IOS8OpenGLESGameScreen(self.levelIndex, self.difficultyLevel, screenWidth, screenHeight, pointsWidth, pointsHeight);
+        NSLog(@"Instantiating IOS8OpenGLESGameScreen");
+        gameScreen = new IOS8OpenGLESGameScreen(self.levelIndex, self.difficultyLevel, MAX(newSize.width, newSize.height), MIN(newSize.width, newSize.height), [UIScreen mainScreen].applicationFrame.size.width, [UIScreen mainScreen].applicationFrame.size.height);
     }
     else
     {
-        [logger debug:@"Instantiating IOSOpenGLESGameScreen"];
-        
-        gameScreen = new IOSOpenGLESGameScreen(self.levelIndex, self.difficultyLevel, screenWidth, screenHeight, pointsWidth, pointsHeight);
+        NSLog(@"Instantiating IOSOpenGLESGameScreen");
+        gameScreen = new IOSOpenGLESGameScreen(self.levelIndex, self.difficultyLevel, MAX(newSize.width, newSize.height), MIN(newSize.width, newSize.height), [UIScreen mainScreen].applicationFrame.size.width, [UIScreen mainScreen].applicationFrame.size.height);
     }
     
     int highWave = [SaveData getHighWaveForDifficultyLevel:self.difficultyLevel andLevelIndex:self.levelIndex];
@@ -150,6 +130,13 @@ static bool isRunningiOS8 = false;
                                              selector:@selector(onResume)
                                                  name:UIApplicationDidBecomeActiveNotification
                                                object:nil];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    gameScreen->onResume();
 }
 
 - (void)viewWillDisappear:(BOOL)animated

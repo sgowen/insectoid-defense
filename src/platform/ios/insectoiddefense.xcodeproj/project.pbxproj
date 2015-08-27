@@ -44,6 +44,7 @@
 		BB40F60C1A1F97AD004C7562 /* Level_Locked_TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB40F6081A1F97AD004C7562 /* Level_Locked_TableViewCell.xib */; };
 		BB40F60D1A1F97AD004C7562 /* Level_Unlocked_TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB40F60A1A1F97AD004C7562 /* Level_Unlocked_TableViewCell.xib */; };
 		BB40F60E1A1F9A9F004C7562 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB12EDD71A1CF6F1006D385B /* libc++.dylib */; };
+		BB4A729A1B8F8BDA003D2A6C /* texture_vert_flip_shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = BB4A72991B8F8BDA003D2A6C /* texture_vert_flip_shader.vsh */; };
 		BB4F30F7197C1DC300270703 /* bg-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4F30F3197C1DC300270703 /* bg-568h@2x~iphone.png */; };
 		BB4F30F8197C1DC300270703 /* bg@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4F30F4197C1DC300270703 /* bg@2x~ipad.png */; };
 		BB4F30F9197C1DC300270703 /* bg@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4F30F5197C1DC300270703 /* bg@2x~iphone.png */; };
@@ -102,7 +103,6 @@
 		BBA4C4CB1A17277C00AB3878 /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = BBA4C4881A17277C00AB3878 /* title.png */; };
 		BBA4C4CC1A17277C00AB3878 /* top_level_ui.png in Resources */ = {isa = PBXBuildFile; fileRef = BBA4C4891A17277C00AB3878 /* top_level_ui.png */; };
 		BBA6492219B5FED100023E5A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBA6492119B5FED100023E5A /* Images.xcassets */; };
-		BBCDD32518BFC8E1003A4EED /* Logger.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCDD32418BFC8E1003A4EED /* Logger.m */; };
 		BBE167251A17F1DD00080846 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB451A3618C30E810093E559 /* libz.dylib */; };
 		BBE19FC61B8CB49E00ED3790 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBE19F651B8CB49E00ED3790 /* Entity.cpp */; };
 		BBE19FC71B8CB49E00ED3790 /* PhysicalEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBE19F671B8CB49E00ED3790 /* PhysicalEntity.cpp */; };
@@ -254,6 +254,7 @@
 		BB430E23189313C600E4EAE1 /* pngpriv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pngpriv.h; path = ../../3rdparty/libpng/pngpriv.h; sourceTree = "<group>"; };
 		BB430E24189313C600E4EAE1 /* pngstruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pngstruct.h; path = ../../3rdparty/libpng/pngstruct.h; sourceTree = "<group>"; };
 		BB451A3618C30E810093E559 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		BB4A72991B8F8BDA003D2A6C /* texture_vert_flip_shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = texture_vert_flip_shader.vsh; sourceTree = "<group>"; };
 		BB4F30F3197C1DC300270703 /* bg-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-568h@2x~iphone.png"; sourceTree = "<group>"; };
 		BB4F30F4197C1DC300270703 /* bg@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x~ipad.png"; sourceTree = "<group>"; };
 		BB4F30F5197C1DC300270703 /* bg@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x~iphone.png"; sourceTree = "<group>"; };
@@ -325,8 +326,6 @@
 		BBA4C4881A17277C00AB3878 /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title.png; sourceTree = "<group>"; };
 		BBA4C4891A17277C00AB3878 /* top_level_ui.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_level_ui.png; sourceTree = "<group>"; };
 		BBA6492119B5FED100023E5A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		BBCDD32318BFC8E1003A4EED /* Logger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logger.h; sourceTree = "<group>"; };
-		BBCDD32418BFC8E1003A4EED /* Logger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Logger.m; sourceTree = "<group>"; };
 		BBE19F651B8CB49E00ED3790 /* Entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
 		BBE19F661B8CB49E00ED3790 /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
 		BBE19F671B8CB49E00ED3790 /* PhysicalEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicalEntity.cpp; sourceTree = "<group>"; };
@@ -697,8 +696,6 @@
 				BB40F6061A1F977A004C7562 /* LevelTableViewCell.m */,
 				BB98B5A51A1C4F94000A06F7 /* LevelWaveRequirementMapper.h */,
 				BB98B5A61A1C4F94000A06F7 /* LevelWaveRequirementMapper.m */,
-				BBCDD32318BFC8E1003A4EED /* Logger.h */,
-				BBCDD32418BFC8E1003A4EED /* Logger.m */,
 				BB00E1401A1EC4C300AF1155 /* MainMenuViewController.h */,
 				BB00E1411A1EC4C300AF1155 /* MainMenuViewController.m */,
 				BB7305D6189C598D009F6DF4 /* Music.h */,
@@ -722,15 +719,15 @@
 			isa = PBXGroup;
 			children = (
 				BBD079F518AA879D00E010AF /* assets */,
-				0ADF1883178E2185005DA99E /* insectoiddefense-Info.plist */,
 				BBA6492119B5FED100023E5A /* Images.xcassets */,
 				0ADF1884178E2185005DA99E /* InfoPlist.strings */,
+				0ADF1883178E2185005DA99E /* insectoiddefense-Info.plist */,
+				BB40F6081A1F97AD004C7562 /* Level_Locked_TableViewCell.xib */,
+				BB40F60A1A1F97AD004C7562 /* Level_Unlocked_TableViewCell.xib */,
 				BB74E80518C2541F007C223E /* Localizable.strings */,
 				0ADF1887178E2185005DA99E /* main.m */,
 				0ADF1896178E2185005DA99E /* MainStoryboard_iPad.storyboard */,
 				0ADF1893178E2185005DA99E /* MainStoryboard_iPhone.storyboard */,
-				BB40F6081A1F97AD004C7562 /* Level_Locked_TableViewCell.xib */,
-				BB40F60A1A1F97AD004C7562 /* Level_Unlocked_TableViewCell.xib */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -909,10 +906,11 @@
 				BBE19FB01B8CB49E00ED3790 /* platform_file_utils.h */,
 				BBE19FB11B8CB49E00ED3790 /* shader.c */,
 				BBE19FB21B8CB49E00ED3790 /* shader.h */,
-				BBE19FB31B8CB49E00ED3790 /* texture.c */,
-				BBE19FB41B8CB49E00ED3790 /* texture.h */,
 				BBE19FB51B8CB49E00ED3790 /* texture_shader.fsh */,
 				BBE19FB61B8CB49E00ED3790 /* texture_shader.vsh */,
+				BB4A72991B8F8BDA003D2A6C /* texture_vert_flip_shader.vsh */,
+				BBE19FB31B8CB49E00ED3790 /* texture.c */,
+				BBE19FB41B8CB49E00ED3790 /* texture.h */,
 				BBE19FB71B8CB49E00ED3790 /* TextureProgram.cpp */,
 				BBE19FB81B8CB49E00ED3790 /* TextureProgram.h */,
 			);
@@ -1222,6 +1220,7 @@
 				BBA4C43C1A1722DE00AB3878 /* goal_hit.caf in Resources */,
 				BBE19FEC1B8CB49E00ED3790 /* texture_shader.fsh in Resources */,
 				BBA4C4361A1722DE00AB3878 /* begin_wave.caf in Resources */,
+				BB4A729A1B8F8BDA003D2A6C /* texture_vert_flip_shader.vsh in Resources */,
 				BBA4C4941A17277C00AB3878 /* games_controller.png in Resources */,
 				BBA4C4461A17274B00AB3878 /* astrolyt.ttf in Resources */,
 				BBA4C43D1A1722DE00AB3878 /* ice_blast.caf in Resources */,
@@ -1376,7 +1375,6 @@
 				BBE19FF11B8CB49E00ED3790 /* TextureRegion.cpp in Sources */,
 				BBE19FD11B8CB49E00ED3790 /* CircleBatcher.cpp in Sources */,
 				BBE1A0C81B8CB65B00ED3790 /* Missile.cpp in Sources */,
-				BBCDD32518BFC8E1003A4EED /* Logger.m in Sources */,
 				0A8FBF86179E07320039BA29 /* pngtrans.c in Sources */,
 				BBE1A0B21B8CB65B00ED3790 /* BlueCreepThree.cpp in Sources */,
 				BBE1A0CF1B8CB65B00ED3790 /* RedCreepOne.cpp in Sources */,
