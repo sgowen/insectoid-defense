@@ -74,6 +74,8 @@ void DSGameScreen::init()
 {
     GameScreen::init();
 
+    // Below modifications necessary to get text displaying readably on a 3DS
+
     m_scoreText->setX(0.5f);
     m_scoreText->setY(1.5f);
     m_scoreText->setWidth(1.0f);
@@ -94,23 +96,29 @@ void DSGameScreen::init()
     m_adjustFundsText->setWidth(m_fundsText->getWidth());
     m_adjustFundsText->setHeight(m_fundsText->getHeight());
 
+    float fontWidth = 0.58f;
+    float fontHeight = 0.54f;
     for (std::vector < std::unique_ptr < TowerCursor >> ::iterator itr = m_backgroundElements->getTowerCursors().begin(); itr != m_backgroundElements->getTowerCursors().end(); ++itr)
     {
-        (*itr)->getCostText().setWidth(0.54f);
-        (*itr)->getCostText().setHeight(0.48f);
+        (*itr)->getCostText().setWidth(fontWidth);
+        (*itr)->getCostText().setHeight(fontHeight);
     }
-    
-    m_backgroundElements->getUpgradeTowerButton().getButtonText().setWidth(0.54f);
-    m_backgroundElements->getUpgradeTowerButton().getButtonText().setHeight(0.48f);
-    
-    m_backgroundElements->getSellTowerButton().getButtonText().setWidth(0.54f);
-    m_backgroundElements->getSellTowerButton().getButtonText().setHeight(0.48f);
-    
-    m_backgroundElements->getUpgradeTowerButton().getFundsText().setWidth(0.54f);
-    m_backgroundElements->getUpgradeTowerButton().getFundsText().setHeight(0.48f);
-    
-    m_backgroundElements->getSellTowerButton().getFundsText().setWidth(0.54f);
-    m_backgroundElements->getSellTowerButton().getFundsText().setHeight(0.48f);
+
+    m_backgroundElements->getUpgradeTowerButton().getButtonText().setX(GAME_WIDTH - fontWidth * 8 + fontWidth / 2);
+    m_backgroundElements->getUpgradeTowerButton().getButtonText().setWidth(fontWidth);
+    m_backgroundElements->getUpgradeTowerButton().getButtonText().setHeight(fontHeight);
+
+    m_backgroundElements->getSellTowerButton().getButtonText().setX(GAME_WIDTH - fontWidth * 5 + fontWidth / 2);
+    m_backgroundElements->getSellTowerButton().getButtonText().setWidth(fontWidth);
+    m_backgroundElements->getSellTowerButton().getButtonText().setHeight(fontHeight);
+
+    m_backgroundElements->getUpgradeTowerButton().getFundsText().setX(GAME_WIDTH - fontWidth * 4 + fontWidth / 2);
+    m_backgroundElements->getUpgradeTowerButton().getFundsText().setWidth(fontWidth);
+    m_backgroundElements->getUpgradeTowerButton().getFundsText().setHeight(fontHeight);
+
+    m_backgroundElements->getSellTowerButton().getFundsText().setX(GAME_WIDTH - fontWidth * 5 + fontWidth / 2);
+    m_backgroundElements->getSellTowerButton().getFundsText().setWidth(fontWidth);
+    m_backgroundElements->getSellTowerButton().getFundsText().setHeight(fontHeight);
 }
 
 void DSGameScreen::render()
@@ -150,7 +158,7 @@ void DSGameScreen::render()
     m_topScreenRenderer->renderText(m_renderer->getTopLevelUiTexture(), *m_adjustFundsText);
 
     m_topScreenRenderer->endFrame();
-    
+
     sf2d_swapbuffers();
 }
 

@@ -256,22 +256,217 @@ void runGame(int level, int difficulty)
     gameScreen.exit();
 }
 
+void printLevelNameAndHighscore(int difficulty, int level, PrintConsole &screen)
+{
+    consoleSelect(&screen);
+    switch (level)
+    {
+    case 0:
+        printf("\x1b[19;0H1. Invasion!         ");
+        break;
+    case 1:
+        printf("\x1b[19;0H2. Freeze or Burn    ");
+        break;
+    case 2:
+        printf("\x1b[19;0H3. Hull Damage       ");
+        break;
+    case 3:
+        printf("\x1b[19;0H4. Clear a Path      ");
+        break;
+    case 4:
+        printf("\x1b[19;0H5. Hangar Breach     ");
+        break;
+    case 5:
+        printf("\x1b[19;0H6. Divided           ");
+        break;
+    case 6:
+        printf("\x1b[19;0H7. Blitzkrieg        ");
+        break;
+    case 7:
+        printf("\x1b[19;0H8. Full-scale War    ");
+        break;
+    case 8:
+        printf("\x1b[19;0H9. Sabotoge          ");
+        break;
+    case 9:
+        printf("\x1b[19;0H10. Finale           ");
+        break;
+    }
+
+    printf("\x1b[19;21H| score: ");
+    printf("\x1b[19;30H%d", SaveData::getInstance()->getHighScore(difficulty, level));
+    printf("\x1b[19;39H wave: ");
+    printf("\x1b[19;45H%d", SaveData::getInstance()->getHighWave(difficulty, level));
+}
+
+int getWaveRequirementForLevelIndex(int level)
+{
+    switch (level)
+    {
+    case 0:
+        return 20;
+    case 1:
+        return 30;
+    case 2:
+        return 30;
+    case 3:
+        return 30;
+    case 4:
+        return 20;
+    case 5:
+        return 30;
+    case 6:
+        return 20;
+    case 7:
+        return 50;
+    case 8:
+        return 40;
+    case 9:
+        return 60;
+    default:
+        return 1337;
+    }
+}
+
+void printLevelDescription(int difficulty, int level, PrintConsole &screen)
+{
+    consoleSelect(&screen);
+
+    int highWave = SaveData::getInstance()->getHighWave(difficulty, level);
+    int waveRequirement = getWaveRequirementForLevelIndex(level - 1);
+
+    if (level == 0 || highWave > waveRequirement)
+    {
+        switch (level)
+        {
+        case 0:
+            printf("\x1b[0;0HInsectoids have ambushed our star cruiser on our way back to Earth! Most of our weapon systems have already been knocked offline or destroyed entirely. The entire ship is infested, including the civilian quarters. Drive them out!");
+            break;
+        case 1:
+            printf("\x1b[0;0HThe Insectoids are nearly out of the civilian quarters, but now we must face their fire armada. They have trapped our best scientists. Fortunately, we have repaired our Freeze Tower, which can force enemies to move slower. Also, it appears that Red Insectoids in particular are very weak to the effects of this tower. Rescue the scientists!");
+            break;
+        case 2:
+            printf("\x1b[0;0HThere is a new type of green Insectoid eating away at our ship's hull. They repair damage from attacks rather quickly. Fortunately, we were able to bring our missiles back online. We can use them to obliterate the enemy! Be careful though, because missiles are ineffective against Red Insectoids and are unable to target the Blue Insectoids.");
+            break;
+        case 3:
+            printf("\x1b[0;0HWe are unable to transport our civilians off the ship until we establish a safe path for them to the hangar. The scientists we rescued have developed a new Fire tower that can prevent the Green Insectoid from regenerating. Also, any Blue Insectoids caught on fire can be targetted by missiles! Clear a path to the hangar!");
+            break;
+        case 4:
+            printf("\x1b[0;0HWe have been cut off from our own hangar, crippling our attack. If we do not reclaim the hangar soon, we will lose our momentum in this fight. The scientists have developed a new Green Tower harnessed from a Green Insectoid we captured in our previous battle. However, we are uncertain of its abilities. In any case, clean out the hangar!");
+            break;
+        case 5:
+            printf("\x1b[0;0HThe hangar is ours, but it is in bad shape. The majority of our equipment has been seized and relocated to the bridge, where the Insectoids are regrouping to isolate us in the hangar. We are unable to get the hangar operational again until we reclaim our equipment!");
+            break;
+        case 6:
+            printf("\x1b[0;0HA new yellow Insectoid has penetrated our industrial sector. Unfortunately for us, it appears to be twice as fast as the others. The Insectoids are going to destroy our supplies if we do not act quickly! Early analysis indicates that this Insectoid is resistant to electric attacks but is highly vulnerable to the Green Tower. Good luck!");
+            break;
+        case 7:
+            printf("\x1b[0;0HOur hangar has been repaired, and the civilians have been sent down to our home planet. After retreating for several weeks, the enemy is approaching again. This appears to be their largest attack yet. We are in a much better position now than ever before to fight them, but prepare for the worst...");
+            break;
+        case 8:
+            printf("\x1b[0;0HWhile we were distracted with the battle topside, the enemy has sabotoged our propulsion system. Unfortunately, we can only afford to send a small team for this, since we are mostly occupied by the larger battle, but we absolutely must regain control of those engines. Otherwise, we will fall out of orbit with our planet and lose our only chance to come home alive!");
+            break;
+        case 9:
+            printf("\x1b[0;0HWe have prevented additional damage to our engines, but we have slowed down enough for the entire Insectoid army to surround us. Our scientists have engineered a bomb that can destroy them all in one shot. All we need to do is fend them off while it is prepared for deployment and our engines are repaired. Pull this off, and we will be able to escape while the Insectoids are wiped out for good!");
+            break;
+        }
+    }
+    else
+    {
+        printf("\x1b[0;0H                                                                                                                                                                                                                                                                                                                                                                                                                ");
+
+        switch (level)
+        {
+        case 1:
+            printf("\x1b[0;0HReach wave 20 or higher in Invasion! to unlock!");
+            break;
+        case 2:
+            printf("\x1b[0;0HReach wave 30 or higher in Freeze or Burn to unlock!");
+            break;
+        case 3:
+            printf("\x1b[0;0HReach wave 30 or higher in Hull Damage to unlock!");
+            break;
+        case 4:
+            printf("\x1b[0;0HReach wave 30 or higher in Clear a Path to unlock!");
+            break;
+        case 5:
+            printf("\x1b[0;0HReach wave 20 or higher in Hangar Breach to unlock!");
+            break;
+        case 6:
+            printf("\x1b[0;0HReach wave 30 or higher in Divided to unlock!");
+            break;
+        case 7:
+            printf("\x1b[0;0HReach wave 20 or higher in Blitzkrieg to unlock!");
+            break;
+        case 8:
+            printf("\x1b[0;0HReach wave 50 or higher in Full-scale War to unlock!");
+            break;
+        case 9:
+            printf("\x1b[0;0HReach wave 40 or higher in Sabotoge to unlock!");
+            break;
+        }
+    }
+}
+
+void showDifficultyLevelSelectionOutput(int difficulty, bool difficultyChosen, int level, PrintConsole &topScreen, PrintConsole &bottomScreen)
+{
+    consoleSelect(&topScreen);
+
+    printf("\x1b[0;0H                                                  "); // Clears file IO info
+
+    printf("\x1b[12;7H Select a Difficulty using the D-Pad");
+
+    switch (difficulty)
+    {
+    case DIFFICULTY_LEVEL_EASY:
+        printf("\x1b[14;22H EASY ");
+        break;
+    case DIFFICULTY_LEVEL_NORMAL:
+        printf("\x1b[14;22HNORMAL");
+        break;
+    case DIFFICULTY_LEVEL_HARD:
+        printf("\x1b[14;22H HARD ");
+        break;
+    }
+
+    if (difficultyChosen)
+    {
+        printf("\x1b[17;10HSelect a Level using the D-Pad");
+
+        printLevelNameAndHighscore(difficulty, level, topScreen);
+        printLevelDescription(difficulty, level, bottomScreen);
+    }
+    else
+    {
+        printf("\x1b[17;0H                                                  ");
+        printf("\x1b[19;0H                                                  ");
+        printf("\x1b[20;0H                                                  ");
+
+        consoleSelect(&bottomScreen);
+        printf("\x1b[0;0H                                                                                                                                                                                                                                                                                                                                                                                                                ");
+    }
+
+    printf("\n\n");
+}
+
 int main(int argc, char** argv)
 {
-    filesystemInit(argc, argv);
-
-    SaveData::getInstance()->loadGame();
-
     // Initialize services
     gfxInitDefault();
+    filesystemInit(argc, argv);
 
-    // Initialize console on top screen. Using NULL as the second argument tells the console library to use the internal console structure as current one
-    consoleInit(GFX_BOTTOM, NULL);
+    PrintConsole topScreen, bottomScreen;
+
+    // Initialize console for both screen using the two different PrintConsole we have defined
+    consoleInit(GFX_TOP, &topScreen);
+    consoleInit(GFX_BOTTOM, &bottomScreen);
 
     bool difficultyChosen = false;
     bool levelChosen = false;
     int difficulty = DIFFICULTY_LEVEL_NORMAL;
     int level = 0;
+
+    SaveData::getInstance()->loadGame();
 
     // Main Menu loop
     while (aptMainLoop())
@@ -284,82 +479,21 @@ int main(int argc, char** argv)
             break; // break in order to return to hbmenu
         }
 
-        printf("\x1b[20;15HSelect a Difficulty using the D-Pad");
-
-        switch (difficulty)
-        {
-        case DIFFICULTY_LEVEL_EASY:
-            printf("\x1b[21;20HEASY");
-            break;
-        case DIFFICULTY_LEVEL_NORMAL:
-            printf("\x1b[21;20HNORMAL");
-            break;
-        case DIFFICULTY_LEVEL_HARD:
-            printf("\x1b[21;20HHARD");
-            break;
-        }
+        showDifficultyLevelSelectionOutput(difficulty, difficultyChosen, level, topScreen, bottomScreen);
 
         if (difficultyChosen)
         {
-            printf("\x1b[23;15HSelect a Level using the D-Pad");
-
-            switch (level)
-            {
-            case 0:
-                printf("\x1b[24;10H1. Invasion!");
-                printf("\x1b[24;30HHighscore: ");
-                printf("\x1b[24;42H%d", SaveData::getInstance()->getHighScore(difficulty, 0));
-                break;
-            case 1:
-                printf("\x1b[24;10H2. Freeze or Burn");
-                printf("\x1b[24;30HHighscore: ");
-                printf("\x1b[24;42H%d", SaveData::getInstance()->getHighScore(difficulty, 1));
-                break;
-            case 2:
-                printf("\x1b[24;10H3. Hull Damage");
-                printf("\x1b[24;30HHighscore: ");
-                printf("\x1b[24;42H%d", SaveData::getInstance()->getHighScore(difficulty, 2));
-                break;
-            case 3:
-                printf("\x1b[24;10H4. Clear a Path");
-                printf("\x1b[24;30HHighscore: ");
-                printf("\x1b[24;42H%d", SaveData::getInstance()->getHighScore(difficulty, 3));
-                break;
-            case 4:
-                printf("\x1b[24;10H5. Hangar Breach");
-                printf("\x1b[24;30HHighscore: ");
-                printf("\x1b[24;42H%d", SaveData::getInstance()->getHighScore(difficulty, 4));
-                break;
-            case 5:
-                printf("\x1b[24;10H6. Divided");
-                printf("\x1b[24;30HHighscore: ");
-                printf("\x1b[24;42H%d", SaveData::getInstance()->getHighScore(difficulty, 5));
-                break;
-            case 6:
-                printf("\x1b[24;10H7. Blitzkrieg");
-                printf("\x1b[24;30HHighscore: ");
-                printf("\x1b[24;42H%d", SaveData::getInstance()->getHighScore(difficulty, 6));
-                break;
-            case 7:
-                printf("\x1b[24;10H8. Full-scale War");
-                printf("\x1b[24;30HHighscore: ");
-                printf("\x1b[24;42H%d", SaveData::getInstance()->getHighScore(difficulty, 7));
-                break;
-            case 8:
-                printf("\x1b[24;10H9. Sabotoge");
-                printf("\x1b[24;30HHighscore: ");
-                printf("\x1b[24;42H%d", SaveData::getInstance()->getHighScore(difficulty, 8));
-                break;
-            case 9:
-                printf("\x1b[24;10H10. Finale");
-                printf("\x1b[24;30HHighscore: ");
-                printf("\x1b[24;42H%d", SaveData::getInstance()->getHighScore(difficulty, 9));
-                break;
-            }
-
             if (kDown & KEY_A)
             {
-                levelChosen = true;
+                int highWave = SaveData::getInstance()->getHighWave(difficulty, level);
+                int waveRequirement = getWaveRequirementForLevelIndex(level - 1);
+
+                levelChosen = level == 0 || highWave > waveRequirement;
+            }
+
+            if (kDown & KEY_B)
+            {
+                difficultyChosen = false;
             }
 
             if ((kDown & KEY_DRIGHT) || (kDown & KEY_DDOWN))
@@ -370,7 +504,8 @@ int main(int argc, char** argv)
                     level = 0;
                 }
             }
-            else if ((kDown & KEY_DLEFT) || (kDown & KEY_DUP))
+
+            if ((kDown & KEY_DLEFT) || (kDown & KEY_DUP))
             {
                 level--;
                 if (level < 0)
@@ -394,7 +529,8 @@ int main(int argc, char** argv)
                     difficulty = DIFFICULTY_LEVEL_EASY;
                 }
             }
-            else if ((kDown & KEY_DLEFT) || (kDown & KEY_DUP))
+
+            if ((kDown & KEY_DLEFT) || (kDown & KEY_DUP))
             {
                 difficulty--;
                 if (difficulty < DIFFICULTY_LEVEL_EASY)
@@ -421,8 +557,9 @@ int main(int argc, char** argv)
             // Initialize services
             gfxInitDefault();
 
-            // Initialize console on top screen. Using NULL as the second argument tells the console library to use the internal console structure as current one
-            consoleInit(GFX_BOTTOM, NULL);
+            // Initialize console for both screen using the two different PrintConsole we have defined
+            consoleInit(GFX_TOP, &topScreen);
+            consoleInit(GFX_BOTTOM, &bottomScreen);
 
             difficultyChosen = false;
             levelChosen = false;
