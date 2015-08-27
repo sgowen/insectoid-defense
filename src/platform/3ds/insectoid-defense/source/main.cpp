@@ -294,8 +294,10 @@ void printLevelNameAndHighscore(int difficulty, int level, PrintConsole &screen)
     }
 
     printf("\x1b[19;21H| score: ");
+    printf("\x1b[19;30H         ");
     printf("\x1b[19;30H%d", SaveData::getInstance()->getHighScore(difficulty, level));
     printf("\x1b[19;39H wave: ");
+    printf("\x1b[19;45H     ");
     printf("\x1b[19;45H%d", SaveData::getInstance()->getHighWave(difficulty, level));
 }
 
@@ -567,6 +569,9 @@ int main(int argc, char** argv)
             level = 0;
         }
     }
+
+    // Exit services
+    gfxExit();
 
     return 0;
 }
