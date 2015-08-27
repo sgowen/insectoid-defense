@@ -53,6 +53,7 @@
 #include "ProjectileParticle.h"
 #include "TowerCursor.h"
 #include "TowerOptionButton.h"
+#include "GpuProgramWrapper.h"
 
 #include <sstream>
 #include <3ds.h>
@@ -95,7 +96,7 @@ void TopScreenRenderer::render()
     static TextureRegion tr = TextureRegion(0.0f, 0.0f, 400.0f, 196.0f, 512.0f, 512.0f);
     m_spriteBatcher->beginBatch();
     m_spriteBatcher->drawSprite(GAME_WIDTH / 2, (GAME_HEIGHT - 2) / 2 + 2, GAME_WIDTH, GAME_HEIGHT - 2, 0, tr);
-    m_spriteBatcher->endBatchWithTexture(*m_topScreenTitleTexture);
+    m_spriteBatcher->endBatch(*m_topScreenTitleTexture);
 }
 
 void TopScreenRenderer::renderDividerLine()
@@ -114,7 +115,7 @@ void TopScreenRenderer::renderText(TextureWrapper &textureWrapper, Text &t)
     std::string text = t.getText();
     m_font->renderText(*m_spriteBatcher, text, t.getX(), t.getY(), t.getWidth(), t.getHeight(), t.getColor());
 
-    m_spriteBatcher->endBatchWithTexture(textureWrapper);
+    m_spriteBatcher->endBatch(textureWrapper);
 }
 
 void TopScreenRenderer::endFrame()

@@ -255,6 +255,14 @@
 		BB430E24189313C600E4EAE1 /* pngstruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pngstruct.h; path = ../../3rdparty/libpng/pngstruct.h; sourceTree = "<group>"; };
 		BB451A3618C30E810093E559 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BB4A72991B8F8BDA003D2A6C /* texture_vert_flip_shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = texture_vert_flip_shader.vsh; sourceTree = "<group>"; };
+		BB4A72B01B8F93AB003D2A6C /* DSCircleBatcher.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DSCircleBatcher.cpp; sourceTree = "<group>"; };
+		BB4A72B11B8F93AB003D2A6C /* DSCircleBatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSCircleBatcher.h; sourceTree = "<group>"; };
+		BB4A72B21B8F93AB003D2A6C /* DSLineBatcher.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DSLineBatcher.cpp; sourceTree = "<group>"; };
+		BB4A72B31B8F93AB003D2A6C /* DSLineBatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSLineBatcher.h; sourceTree = "<group>"; };
+		BB4A72B41B8F93AB003D2A6C /* DSRectangleBatcher.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DSRectangleBatcher.cpp; sourceTree = "<group>"; };
+		BB4A72B51B8F93AB003D2A6C /* DSRectangleBatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSRectangleBatcher.h; sourceTree = "<group>"; };
+		BB4A72B61B8F93AB003D2A6C /* DSSpriteBatcher.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DSSpriteBatcher.cpp; sourceTree = "<group>"; };
+		BB4A72B71B8F93AB003D2A6C /* DSSpriteBatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSSpriteBatcher.h; sourceTree = "<group>"; };
 		BB4F30F3197C1DC300270703 /* bg-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-568h@2x~iphone.png"; sourceTree = "<group>"; };
 		BB4F30F4197C1DC300270703 /* bg@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x~ipad.png"; sourceTree = "<group>"; };
 		BB4F30F5197C1DC300270703 /* bg@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x~iphone.png"; sourceTree = "<group>"; };
@@ -274,12 +282,6 @@
 		BB74E80618C2541F007C223E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BB81B1BB19BE1A1800548837 /* GGDDeviceUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGDDeviceUtil.h; sourceTree = "<group>"; };
 		BB81B1BC19BE1A1800548837 /* GGDDeviceUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGDDeviceUtil.m; sourceTree = "<group>"; };
-		BB85184B1B8CD0EC009B33A5 /* DSCircleBatcher.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DSCircleBatcher.cpp; sourceTree = "<group>"; };
-		BB85184C1B8CD0EC009B33A5 /* DSCircleBatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSCircleBatcher.h; sourceTree = "<group>"; };
-		BB85184D1B8CD0EC009B33A5 /* DSLineBatcher.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DSLineBatcher.cpp; sourceTree = "<group>"; };
-		BB85184E1B8CD0EC009B33A5 /* DSLineBatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSLineBatcher.h; sourceTree = "<group>"; };
-		BB85184F1B8CD0EC009B33A5 /* DSRectangleBatcher.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DSRectangleBatcher.cpp; sourceTree = "<group>"; };
-		BB8518501B8CD0EC009B33A5 /* DSRectangleBatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSRectangleBatcher.h; sourceTree = "<group>"; };
 		BB98B5A51A1C4F94000A06F7 /* LevelWaveRequirementMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelWaveRequirementMapper.h; sourceTree = "<group>"; };
 		BB98B5A61A1C4F94000A06F7 /* LevelWaveRequirementMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelWaveRequirementMapper.m; sourceTree = "<group>"; };
 		BBA4C4211A1722C200AB3878 /* bgm.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; path = bgm.aifc; sourceTree = "<group>"; };
@@ -391,8 +393,6 @@
 		BBE19FC21B8CB49E00ED3790 /* TouchType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchType.h; sourceTree = "<group>"; };
 		BBE19FC41B8CB49E00ED3790 /* FlagUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlagUtil.h; sourceTree = "<group>"; };
 		BBE19FC51B8CB49E00ED3790 /* macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macros.h; sourceTree = "<group>"; };
-		BBE19FF41B8CB4BB00ED3790 /* DSSpriteBatcher.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DSSpriteBatcher.cpp; sourceTree = "<group>"; };
-		BBE19FF51B8CB4BB00ED3790 /* DSSpriteBatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSSpriteBatcher.h; sourceTree = "<group>"; };
 		BBE19FF71B8CB4BB00ED3790 /* ColorPixelShader.hlsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = ColorPixelShader.hlsl; sourceTree = "<group>"; };
 		BBE19FF81B8CB4BB00ED3790 /* ColorVertexShader.hlsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = ColorVertexShader.hlsl; sourceTree = "<group>"; };
 		BBE19FF91B8CB4BB00ED3790 /* Direct3DCircleBatcher.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Direct3DCircleBatcher.cpp; sourceTree = "<group>"; };
@@ -764,6 +764,21 @@
 			name = music;
 			sourceTree = "<group>";
 		};
+		BB4A72AF1B8F93AB003D2A6C /* 3ds */ = {
+			isa = PBXGroup;
+			children = (
+				BB4A72B01B8F93AB003D2A6C /* DSCircleBatcher.cpp */,
+				BB4A72B11B8F93AB003D2A6C /* DSCircleBatcher.h */,
+				BB4A72B21B8F93AB003D2A6C /* DSLineBatcher.cpp */,
+				BB4A72B31B8F93AB003D2A6C /* DSLineBatcher.h */,
+				BB4A72B41B8F93AB003D2A6C /* DSRectangleBatcher.cpp */,
+				BB4A72B51B8F93AB003D2A6C /* DSRectangleBatcher.h */,
+				BB4A72B61B8F93AB003D2A6C /* DSSpriteBatcher.cpp */,
+				BB4A72B71B8F93AB003D2A6C /* DSSpriteBatcher.h */,
+			);
+			path = 3ds;
+			sourceTree = "<group>";
+		};
 		BBD079F518AA879D00E010AF /* assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -855,7 +870,7 @@
 		BBE19F7C1B8CB49E00ED3790 /* ui */ = {
 			isa = PBXGroup;
 			children = (
-				BBE19FF31B8CB4BB00ED3790 /* 3ds */,
+				BB4A72AF1B8F93AB003D2A6C /* 3ds */,
 				BBE19F801B8CB49E00ED3790 /* CircleBatcher.cpp */,
 				BBE19F811B8CB49E00ED3790 /* CircleBatcher.h */,
 				BBE19F821B8CB49E00ED3790 /* Color.h */,
@@ -924,21 +939,6 @@
 				BBE19FC51B8CB49E00ED3790 /* macros.h */,
 			);
 			path = util;
-			sourceTree = "<group>";
-		};
-		BBE19FF31B8CB4BB00ED3790 /* 3ds */ = {
-			isa = PBXGroup;
-			children = (
-				BB85184B1B8CD0EC009B33A5 /* DSCircleBatcher.cpp */,
-				BB85184C1B8CD0EC009B33A5 /* DSCircleBatcher.h */,
-				BB85184D1B8CD0EC009B33A5 /* DSLineBatcher.cpp */,
-				BB85184E1B8CD0EC009B33A5 /* DSLineBatcher.h */,
-				BB85184F1B8CD0EC009B33A5 /* DSRectangleBatcher.cpp */,
-				BB8518501B8CD0EC009B33A5 /* DSRectangleBatcher.h */,
-				BBE19FF41B8CB4BB00ED3790 /* DSSpriteBatcher.cpp */,
-				BBE19FF51B8CB4BB00ED3790 /* DSSpriteBatcher.h */,
-			);
-			path = 3ds;
 			sourceTree = "<group>";
 		};
 		BBE19FF61B8CB4BB00ED3790 /* direct3d */ = {

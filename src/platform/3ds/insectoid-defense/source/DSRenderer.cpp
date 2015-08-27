@@ -14,6 +14,7 @@
 #include "Font.h"
 #include "TextureWrapper.h"
 #include "GameConstants.h"
+#include "GpuProgramWrapper.h"
 
 #include <sstream>
 #include <3ds.h>

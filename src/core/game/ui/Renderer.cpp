@@ -65,7 +65,7 @@ void Renderer::renderBackground(BackgroundElements &backgroundElements)
     renderPhysicalEntity(backgroundElements.getLeftBackground(), Assets::getBackgroundLeftSource());
     renderPhysicalEntity(backgroundElements.getRightBackground(), Assets::getBackgroundRightSource());
 
-    m_spriteBatcher->endBatchWithTexture(*m_backgroundTexture);
+    m_spriteBatcher->endBatch(*m_backgroundTexture);
 }
 
 void Renderer::renderBackgroundOverlay(BackgroundElements &backgroundElements, TimeButton &timeButton)
@@ -84,7 +84,7 @@ void Renderer::renderBackgroundOverlay(BackgroundElements &backgroundElements, T
     renderPhysicalEntity(backgroundElements.getCoreShipModule(), Assets::getCoreShipModuleSource(backgroundElements.getCoreShipModule()));
     renderPhysicalEntity(timeButton, Assets::getTimeButtonSourceForSpeedScalar(timeButton.getSpeedScalar()));
 
-    m_spriteBatcher->endBatchWithTexture(*m_backgroundTexture);
+    m_spriteBatcher->endBatch(*m_backgroundTexture);
 }
 
 void Renderer::renderWorldAndTouchCursor(World &world, TouchCursor &touchCursor)
@@ -101,7 +101,7 @@ void Renderer::renderWorldAndTouchCursor(World &world, TouchCursor &touchCursor)
         renderPhysicalEntity((**itr), Assets::getPlatformSource((**itr)));
     }
 
-    m_spriteBatcher->endBatchWithTexture(*m_spawnPlatformsProjectilesTowersTexture);
+    m_spriteBatcher->endBatch(*m_spawnPlatformsProjectilesTowersTexture);
 
     if (world.getCreeps().size() > 0)
     {
@@ -113,7 +113,7 @@ void Renderer::renderWorldAndTouchCursor(World &world, TouchCursor &touchCursor)
             m_spriteBatcher->drawSprite((**itr).getPosition().getX(), (**itr).getPosition().getY(), (**itr).getWidth(), (**itr).getHeight(), (**itr).getAngle(), color, Assets::getCreepSource((**itr), false));
         }
 
-        m_spriteBatcher->endBatchWithTexture(*m_creepsTexture);
+        m_spriteBatcher->endBatch(*m_creepsTexture);
     }
 
     if (touchCursor.isVisible())
@@ -131,7 +131,7 @@ void Renderer::renderWorldAndTouchCursor(World &world, TouchCursor &touchCursor)
             renderPhysicalEntity((**itr), Assets::getTowerSource((**itr)));
         }
 
-        m_spriteBatcher->endBatchWithTexture(*m_spawnPlatformsProjectilesTowersTexture);
+        m_spriteBatcher->endBatch(*m_spawnPlatformsProjectilesTowersTexture);
     }
 
     if (world.getMissiles().size() > 0)
@@ -143,7 +143,7 @@ void Renderer::renderWorldAndTouchCursor(World &world, TouchCursor &touchCursor)
             renderPhysicalEntity((**itr), Assets::getMissileSource((**itr)));
         }
 
-        m_spriteBatcher->endBatchWithTexture(*m_spawnPlatformsProjectilesTowersTexture);
+        m_spriteBatcher->endBatch(*m_spawnPlatformsProjectilesTowersTexture);
     }
 
     if (world.getIceBlasts().size() > 0)
@@ -170,7 +170,7 @@ void Renderer::renderWorldAndTouchCursor(World &world, TouchCursor &touchCursor)
                 }
             }
 
-            m_spriteBatcher->endBatchWithTexture(*m_spawnPlatformsProjectilesTowersTexture);
+            m_spriteBatcher->endBatch(*m_spawnPlatformsProjectilesTowersTexture);
         }
     }
 
@@ -183,7 +183,7 @@ void Renderer::renderWorldAndTouchCursor(World &world, TouchCursor &touchCursor)
             renderPhysicalEntity((**itr), Assets::getFireBoltSource((**itr)));
         }
 
-        m_spriteBatcher->endBatchWithTexture(*m_spawnPlatformsProjectilesTowersTexture);
+        m_spriteBatcher->endBatch(*m_spawnPlatformsProjectilesTowersTexture);
     }
 
     if (world.getAcidDrops().size() > 0)
@@ -195,7 +195,7 @@ void Renderer::renderWorldAndTouchCursor(World &world, TouchCursor &touchCursor)
             renderPhysicalEntity((**itr), Assets::getAcidDropSource((**itr)));
         }
 
-        m_spriteBatcher->endBatchWithTexture(*m_spawnPlatformsProjectilesTowersTexture);
+        m_spriteBatcher->endBatch(*m_spawnPlatformsProjectilesTowersTexture);
     }
 
     if (world.getLazerBeams().size() > 0)
@@ -223,7 +223,7 @@ void Renderer::renderWorldAndTouchCursor(World &world, TouchCursor &touchCursor)
             m_spriteBatcher->drawSprite((**itr).getPosition().getX(), (**itr).getPosition().getY(), (**itr).getWidth(), (**itr).getHeight(), (**itr).getAngle(), color, Assets::getElectricBoltSource((**itr)));
         }
 
-        m_spriteBatcher->endBatchWithTexture(*m_spawnPlatformsProjectilesTowersTexture);
+        m_spriteBatcher->endBatch(*m_spawnPlatformsProjectilesTowersTexture);
     }
 
     if (world.getProjectiles().size() > 0)
@@ -236,7 +236,7 @@ void Renderer::renderWorldAndTouchCursor(World &world, TouchCursor &touchCursor)
             m_spriteBatcher->drawSprite((**itr).getPosition().getX(), (**itr).getPosition().getY(), (**itr).getWidth(), (**itr).getHeight(), (**itr).getAngle(), color, Assets::getProjectileSource((**itr)));
         }
 
-        m_spriteBatcher->endBatchWithTexture(*m_spawnPlatformsProjectilesTowersTexture);
+        m_spriteBatcher->endBatch(*m_spawnPlatformsProjectilesTowersTexture);
     }
 
     if (world.getExplosions().size() > 0)
@@ -248,7 +248,7 @@ void Renderer::renderWorldAndTouchCursor(World &world, TouchCursor &touchCursor)
             renderPhysicalEntity((**itr), Assets::getExplosionSource((**itr)));
         }
 
-        m_spriteBatcher->endBatchWithTexture(*m_looseObjectsTexture);
+        m_spriteBatcher->endBatch(*m_looseObjectsTexture);
     }
 
     if (world.getToxicClouds().size() > 0)
@@ -270,7 +270,7 @@ void Renderer::renderWorldAndTouchCursor(World &world, TouchCursor &touchCursor)
             m_spriteBatcher->drawSprite((**itr).getPosition().getX(), (**itr).getPosition().getY(), (**itr).getWidth(), (**itr).getHeight(), (**itr).getAngle(), color, Assets::getCreepBodyPartSource((**itr)));
         }
 
-        m_spriteBatcher->endBatchWithTexture(*m_looseObjectsTexture);
+        m_spriteBatcher->endBatch(*m_looseObjectsTexture);
     }
 
     if (world.getCreeps().size() > 0)
@@ -297,7 +297,7 @@ void Renderer::renderWorldAndTouchCursor(World &world, TouchCursor &touchCursor)
                 }
             }
 
-            m_spriteBatcher->endBatchWithTexture(*m_creepsTexture);
+            m_spriteBatcher->endBatch(*m_creepsTexture);
         }
     }
 
@@ -311,7 +311,7 @@ void Renderer::renderWorldAndTouchCursor(World &world, TouchCursor &touchCursor)
             m_spriteBatcher->drawSprite((**itr).getPosition().getX(), (**itr).getPosition().getY(), (**itr).getWidth(), (**itr).getHeight(), (**itr).getAngle(), color, Assets::getProjectileParticleSource((**itr)));
         }
 
-        m_spriteBatcher->endBatchWithTexture(*m_spawnPlatformsProjectilesTowersTexture);
+        m_spriteBatcher->endBatch(*m_spawnPlatformsProjectilesTowersTexture);
     }
 
     if (world.getTowers().size() > 0)
@@ -346,7 +346,7 @@ void Renderer::renderTowerMenu(BackgroundElements &backgroundElements)
 {
     m_spriteBatcher->beginBatch();
     m_spriteBatcher->drawSprite(15.105f, GAME_HEIGHT / 2, 1.59f, GAME_HEIGHT, 0, Assets::getTowerMenuBackgroundSource());
-    m_spriteBatcher->endBatchWithTexture(*m_backgroundTexture);
+    m_spriteBatcher->endBatch(*m_backgroundTexture);
 
     if (backgroundElements.isUpgradeSellMenuShowing())
     {
@@ -375,7 +375,7 @@ void Renderer::renderTowerMenu(BackgroundElements &backgroundElements)
             m_spriteBatcher->drawSprite((**itr).getPosition().getX(), (**itr).getPosition().getY(), (**itr).getWidth(), (**itr).getHeight(), (**itr).getAngle(), color, Assets::getTowerSource((*itr)->getTowerType(), 0));
         }
 
-        m_spriteBatcher->endBatchWithTexture(*m_spawnPlatformsProjectilesTowersTexture);
+        m_spriteBatcher->endBatch(*m_spawnPlatformsProjectilesTowersTexture);
 
         for (std::vector < std::unique_ptr < TowerCursor >> ::iterator itr = backgroundElements.getTowerCursors().begin(); itr != backgroundElements.getTowerCursors().end(); ++itr)
         {
@@ -394,7 +394,7 @@ void Renderer::renderText(Text &t)
     std::string text = t.getText();
     m_font->renderText(*m_spriteBatcher, text, t.getX(), t.getY(), t.getWidth(), t.getHeight(), t.getColor());
 
-    m_spriteBatcher->endBatchWithTexture(*m_topLevelUiTexture);
+    m_spriteBatcher->endBatch(*m_topLevelUiTexture);
 }
 
 void Renderer::renderDialog(Dialog &dialog)
@@ -403,7 +403,7 @@ void Renderer::renderDialog(Dialog &dialog)
 
     renderPhysicalEntity(dialog, Assets::getDialogSource());
 
-    m_spriteBatcher->endBatchWithTexture(*m_topLevelUiTexture);
+    m_spriteBatcher->endBatch(*m_topLevelUiTexture);
 
     renderText(dialog.getTitle());
     renderText(dialog.getLeftButton());
