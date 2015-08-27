@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Gowen Game Dev. All rights reserved.
 //
 
-#ifndef __tappyplane__DSGameScreen__
-#define __tappyplane__DSGameScreen__
+#ifndef __insectoiddefense__DSGameScreen__
+#define __insectoiddefense__DSGameScreen__
 
 #include "GameScreen.h"
 
@@ -16,7 +16,7 @@ class TopScreenRenderer;
 class DSGameScreen : public GameScreen
 {
 public:
-    DSGameScreen(int levelIndex, int difficulty, int topScreenWidth, int topScreenHeight, int bottomScreenWidth, int bottomScreenHeight);
+    DSGameScreen(int level, int difficulty, int topScreenWidth, int topScreenHeight, int bottomScreenWidth, int bottomScreenHeight);
 
     virtual void touchToWorld(TouchEvent &touchEvent);
 
@@ -35,7 +35,7 @@ private:
     int m_iTopScreenHeight;
     int m_iBottomScreenWidth;
     int m_iBottomScreenHeight;
-    TopScreenRenderer *topScreenRenderer;
+    TopScreenRenderer *m_topScreenRenderer;
 };
 
-#endif /* defined(__tappyplane__DSGameScreen__) */
+#endif /* defined(__insectoiddefense__DSGameScreen__) */

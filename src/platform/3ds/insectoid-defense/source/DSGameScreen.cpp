@@ -37,18 +37,18 @@
 
 #include <string.h>
 
-DSGameScreen::DSGameScreen(int levelIndex, int difficulty, int topScreenWidth, int topScreenHeight, int bottomScreenWidth, int bottomScreenHeight) : GameScreen(levelIndex, difficulty)
+DSGameScreen::DSGameScreen(int level, int difficulty, int topScreenWidth, int topScreenHeight, int bottomScreenWidth, int bottomScreenHeight) : GameScreen(level, difficulty)
 {
-    sf2d_init(GAME_WIDTH, GAME_HEIGHT, GAME_WIDTH, GAME_HEIGHT);
+    sf2d_init_advanced(GAME_WIDTH, GAME_HEIGHT, GAME_WIDTH, GAME_HEIGHT, SF2D_GPUCMD_DEFAULT_SIZE, SF2D_TEMPPOOL_DEFAULT_SIZE);
 
     m_renderer = std::unique_ptr<DSRenderer>(new DSRenderer(GFX_BOTTOM, bottomScreenWidth, bottomScreenHeight));
-    topScreenRenderer = new TopScreenRenderer(GFX_TOP, 400, 240);
+    m_topScreenRenderer = new TopScreenRenderer(GFX_TOP, 400, 240);
 
     m_iTopScreenWidth = topScreenWidth;
     m_iTopScreenHeight = topScreenHeight;
     m_iBottomScreenWidth = bottomScreenWidth;
     m_iBottomScreenHeight = bottomScreenHeight;
-    
+
     init();
 }
 
@@ -96,8 +96,21 @@ void DSGameScreen::init()
 
     for (std::vector < std::unique_ptr < TowerCursor >> ::iterator itr = m_backgroundElements->getTowerCursors().begin(); itr != m_backgroundElements->getTowerCursors().end(); ++itr)
     {
-        (*itr)->getCostText().setHeight(0.44f);
+        (*itr)->getCostText().setWidth(0.54f);
+        (*itr)->getCostText().setHeight(0.48f);
     }
+    
+    m_backgroundElements->getUpgradeTowerButton().getButtonText().setWidth(0.54f);
+    m_backgroundElements->getUpgradeTowerButton().getButtonText().setHeight(0.48f);
+    
+    m_backgroundElements->getSellTowerButton().getButtonText().setWidth(0.54f);
+    m_backgroundElements->getSellTowerButton().getButtonText().setHeight(0.48f);
+    
+    m_backgroundElements->getUpgradeTowerButton().getFundsText().setWidth(0.54f);
+    m_backgroundElements->getUpgradeTowerButton().getFundsText().setHeight(0.48f);
+    
+    m_backgroundElements->getSellTowerButton().getFundsText().setWidth(0.54f);
+    m_backgroundElements->getSellTowerButton().getFundsText().setHeight(0.48f);
 }
 
 void DSGameScreen::render()
@@ -125,23 +138,26 @@ void DSGameScreen::render()
 
     m_renderer->endFrame();
 
-    topScreenRenderer->beginFrame();
+    m_topScreenRenderer->beginFrame();
 
-    topScreenRenderer->render();
+    m_topScreenRenderer->render();
+
+    m_topScreenRenderer->renderDividerLine();
+
+    m_topScreenRenderer->renderText(m_renderer->getTopLevelUiTexture(), *m_statusText);
+    m_topScreenRenderer->renderText(m_renderer->getTopLevelUiTexture(), *m_scoreText);
+    m_topScreenRenderer->renderText(m_renderer->getTopLevelUiTexture(), *m_fundsText);
+    m_topScreenRenderer->renderText(m_renderer->getTopLevelUiTexture(), *m_adjustFundsText);
+
+    m_topScreenRenderer->endFrame();
     
-    topScreenRenderer->renderDividerLine();
-
-    topScreenRenderer->renderText(m_renderer->getTopLevelUiTexture(), *m_statusText);
-    topScreenRenderer->renderText(m_renderer->getTopLevelUiTexture(), *m_scoreText);
-    topScreenRenderer->renderText(m_renderer->getTopLevelUiTexture(), *m_fundsText);
-    topScreenRenderer->renderText(m_renderer->getTopLevelUiTexture(), *m_adjustFundsText);
-
-    topScreenRenderer->endFrame();
+    sf2d_swapbuffers();
 }
 
 void DSGameScreen::exit()
 {
     m_renderer->cleanUp();
+    m_topScreenRenderer->cleanUp();
 
     sf2d_fini();
 }

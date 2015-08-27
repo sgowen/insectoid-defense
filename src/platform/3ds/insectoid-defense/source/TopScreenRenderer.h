@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Gowen Game Dev. All rights reserved.
 //
 
-#ifndef __tappyplane__TopScreenRenderer__
-#define __tappyplane__TopScreenRenderer__
+#ifndef __insectoiddefense__TopScreenRenderer__
+#define __insectoiddefense__TopScreenRenderer__
 
 #include <memory>
 
@@ -45,4 +45,4 @@ private:
     std::unique_ptr<TextureWrapper> m_topScreenTitleTexture;
 };
 
-#endif /* defined(__tappyplane__TopScreenRenderer__) */
+#endif /* defined(__insectoiddefense__TopScreenRenderer__) */

@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Gowen Game Dev. All rights reserved.
 //
 
-#ifndef __tappyplane__DSRenderer__
-#define __tappyplane__DSRenderer__
+#ifndef __insectoiddefense__DSRenderer__
+#define __insectoiddefense__DSRenderer__
 
 #include "Renderer.h"
 
@@ -32,4 +32,4 @@ private:
     gfxScreen_t m_screen;
 };
 
-#endif /* defined(__tappyplane__DSRenderer__) */
+#endif /* defined(__insectoiddefense__DSRenderer__) */

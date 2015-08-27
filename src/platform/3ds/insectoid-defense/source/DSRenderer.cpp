@@ -75,7 +75,7 @@ DSRenderer::DSRenderer(gfxScreen_t screen, int screenWidth, int screenHeight) : 
     m_spriteBatcher = std::unique_ptr<DSSpriteBatcher>(new DSSpriteBatcher(screen, screenWidth, screenHeight));
     m_rectangleBatcher = std::unique_ptr<DSRectangleBatcher>(new DSRectangleBatcher(screen, screenWidth, screenHeight, false));
     m_lineBatcher = std::unique_ptr<DSLineBatcher>(new DSLineBatcher(screen, screenWidth, screenHeight));
-    m_circleBatcher = std::unique_ptr<DSCircleBatcher>(new DSCircleBatcher());
+    m_circleBatcher = std::unique_ptr<DSCircleBatcher>(new DSCircleBatcher(screen, screenWidth, screenHeight));
 
     backgroundTex = sf2d_create_texture_mem_RGBA8(background.pixel_data, background.width, background.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
     creepsTex = sf2d_create_texture_mem_RGBA8(creeps.pixel_data, creeps.width, creeps.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
@@ -108,8 +108,6 @@ void DSRenderer::beginFrame()
 void DSRenderer::endFrame()
 {
     sf2d_end_frame();
-
-    sf2d_swapbuffers();
 }
 
 void DSRenderer::cleanUp()

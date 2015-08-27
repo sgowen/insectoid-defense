@@ -22,32 +22,32 @@ class Vector2D;
 class TowerOptionButton
 {
 public:
-	TowerOptionButton(float x, float y, std::string buttonText, float borderRed, float borderGreen, float borderBlue, float borderAlpha, float textRed, float textGreen, float textBlue, float textAlpha);
+    TowerOptionButton(float x, float y, std::string buttonText, float borderRed, float borderGreen, float borderBlue, float borderAlpha, float textRed, float textGreen, float textBlue, float textAlpha);
 
-	bool isTouching(Vector2D &touchPoint);
+    bool isTouching(Vector2D &touchPoint);
 
-	Rectangle & getBorder();
+    Rectangle & getBorder();
 
-	Color getBorderColor();
+    Color getBorderColor();
 
-	void setBorderColor(float borderRed, float borderGreen, float borderBlue, float borderAlpha);
+    void setBorderColor(float borderRed, float borderGreen, float borderBlue, float borderAlpha);
 
-	Color getTextColor();
-	
-	void setTextColor(float textRed, float textGreen, float textBlue, float textAlpha);
+    Color getTextColor();
 
-	Text & getButtonText();
+    void setTextColor(float textRed, float textGreen, float textBlue, float textAlpha);
 
-	Text & getFundsText();
+    Text & getButtonText();
+
+    Text & getFundsText();
 
 private:
-	std::unique_ptr<Rectangle> m_border;
-	std::unique_ptr<Text> m_buttonText;
-	std::unique_ptr<Text> m_fundsText;
-	float m_fBorderRed;
-	float m_fBorderGreen;
-	float m_fBorderBlue;
-	float m_fBorderAlpha;
+    std::unique_ptr<Rectangle> m_border;
+    std::unique_ptr<Text> m_buttonText;
+    std::unique_ptr<Text> m_fundsText;
+    float m_fBorderRed;
+    float m_fBorderGreen;
+    float m_fBorderBlue;
+    float m_fBorderAlpha;
 };
 
 #endif /* defined(__insectoiddefense__TowerOptionButton__) */
