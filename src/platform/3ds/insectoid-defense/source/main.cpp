@@ -337,6 +337,8 @@ void printLevelDescription(int difficulty, int level, PrintConsole &screen)
     int highWave = SaveData::getInstance()->getHighWave(difficulty, level - 1);
     int waveRequirement = getWaveRequirementForLevelIndex(level - 1);
 
+    printf("\x1b[0;0H                                                                                                                                                                                                                                                                                                                                                                                                                ");
+    
     if (level == 0 || highWave > waveRequirement)
     {
         switch (level)
@@ -375,8 +377,6 @@ void printLevelDescription(int difficulty, int level, PrintConsole &screen)
     }
     else
     {
-        printf("\x1b[0;0H                                                                                                                                                                                                                                                                                                                                                                                                                ");
-
         switch (level)
         {
         case 1:
