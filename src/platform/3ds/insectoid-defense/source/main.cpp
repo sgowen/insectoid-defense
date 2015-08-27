@@ -334,7 +334,7 @@ void printLevelDescription(int difficulty, int level, PrintConsole &screen)
 {
     consoleSelect(&screen);
 
-    int highWave = SaveData::getInstance()->getHighWave(difficulty, level);
+    int highWave = SaveData::getInstance()->getHighWave(difficulty, level - 1);
     int waveRequirement = getWaveRequirementForLevelIndex(level - 1);
 
     if (level == 0 || highWave > waveRequirement)
@@ -487,7 +487,7 @@ int main(int argc, char** argv)
         {
             if (kDown & KEY_A)
             {
-                int highWave = SaveData::getInstance()->getHighWave(difficulty, level);
+                int highWave = SaveData::getInstance()->getHighWave(difficulty, level - 1);
                 int waveRequirement = getWaveRequirementForLevelIndex(level - 1);
 
                 levelChosen = level == 0 || highWave > waveRequirement;
