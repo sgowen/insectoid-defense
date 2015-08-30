@@ -1,57 +1,21 @@
 package com.gowengamedev.insectoiddefense;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Point;
 import android.graphics.Typeface;
-import android.os.Build;
-import android.os.Build.VERSION;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ImageSpan;
-import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.gowengamedev.insectoiddefense.R;
-
 public final class ViewUtils
 {
     private static Typeface astrolytTypeface;
-
-    public static void hideKeyboardForView(View view)
-    {
-        Context context = view.getContext();
-        InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-    }
-
-    @SuppressLint("NewApi")
-    @SuppressWarnings("deprecation")
-    public static Point getScreenSize(Activity activity)
-    {
-        Display display = activity.getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-
-        if (VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2)
-        {
-            display.getSize(size);
-        }
-        else
-        {
-            size.x = display.getWidth();
-            size.y = display.getHeight();
-        }
-
-        return size;
-    }
 
     public static final void setAstrolytTypeFaceForViewGroup(ViewGroup vg)
     {
@@ -103,11 +67,6 @@ public final class ViewUtils
             TextView statsTextView = (TextView) listItem.findViewById(R.id.level_stats_textview);
             statsTextView.setTextColor(Color.BLACK);
         }
-    }
-
-    public static String getTrimmedString(TextView tv)
-    {
-        return tv.getText().toString().trim();
     }
 
     private static Typeface getAstrolytTypeface(Context context)

@@ -42,7 +42,7 @@ DSGameScreen::DSGameScreen(int level, int difficulty, int topScreenWidth, int to
     sf2d_init_advanced(GAME_WIDTH, GAME_HEIGHT, GAME_WIDTH, GAME_HEIGHT, SF2D_GPUCMD_DEFAULT_SIZE, SF2D_TEMPPOOL_DEFAULT_SIZE);
 
     m_renderer = std::unique_ptr<DSRenderer>(new DSRenderer(GFX_BOTTOM, bottomScreenWidth, bottomScreenHeight));
-    m_topScreenRenderer = new TopScreenRenderer(GFX_TOP, 400, 240);
+    m_topScreenRenderer = new TopScreenRenderer(GFX_TOP, topScreenWidth, topScreenHeight);
 
     m_iTopScreenWidth = topScreenWidth;
     m_iTopScreenHeight = topScreenHeight;

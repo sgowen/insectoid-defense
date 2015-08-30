@@ -14,8 +14,6 @@ public final class MainMenuActivity extends Activity
     {
         super.onCreate(savedInstanceState);
 
-        Logger.initializeLoggingLevel("DEBUG");
-
         AppPrefs.setInstance(this);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);

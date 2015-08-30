@@ -1,19 +1,18 @@
 package com.gowengamedev.insectoiddefense;
 
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
-
 import android.app.Activity;
 import android.opengl.GLSurfaceView.Renderer;
 import android.os.SystemClock;
+import android.util.Log;
 import android.widget.Toast;
 
-import com.gowengamedev.insectoiddefense.platform.PlatformFileUtils;
+import com.gowengamedev.insectoiddefense.platform.PlatformAssetUtils;
 
-public final class RendererWrapper implements Renderer
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
+
+public final class GameRenderer implements Renderer
 {
-    private static final Logger logger = new Logger(RendererWrapper.class);
-
     // Definitions from src/core/game/ResourceConstants.h
     private static final short MUSIC_STOP = 1;
     private static final short MUSIC_PLAY_MAP_SPACE = 2;
@@ -85,7 +84,7 @@ public final class RendererWrapper implements Renderer
     private boolean isInitialized;
     private boolean _isMinimumWaveRequirementMet;
 
-    public RendererWrapper(Activity activity, int deviceScreenWidth, int deviceScreenHeight, int levelIndex, int difficulty)
+    public GameRenderer(Activity activity, int deviceScreenWidth, int deviceScreenHeight, int levelIndex, int difficulty)
     {
         this.activity = activity;
         this.deviceScreenWidth = deviceScreenWidth;
@@ -118,11 +117,11 @@ public final class RendererWrapper implements Renderer
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config)
     {
-        logger.debug("GL Surface created!");
+        Log.d("GameRenderer", "GL Surface created!");
 
         if (!isInitialized)
         {
-            PlatformFileUtils.init_asset_manager(activity.getAssets());
+            PlatformAssetUtils.init_asset_manager(activity.getAssets());
             isInitialized = true;
         }
 
@@ -132,7 +131,7 @@ public final class RendererWrapper implements Renderer
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height)
     {
-        logger.debug("GL Surface changed!");
+        Log.d("GameRenderer", "GL Surface changed!");
 
         on_surface_changed(width, height, width, height);
         on_resume();
@@ -175,7 +174,7 @@ public final class RendererWrapper implements Renderer
         else
         {
             realTimeElapsed_ms = smoothedDeltaRealTime_ms; // just the first
-                                                           // time
+            // time
         }
 
         movAverageDeltaTime_ms = (realTimeElapsed_ms + movAverageDeltaTime_ms * (movAveragePeriod - 1)) / movAveragePeriod;
