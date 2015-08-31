@@ -35,7 +35,7 @@
 #include "Rectangle.h"
 #include "TowerOptionButton.h"
 #include "Circle.h"
-#include "DirectXManager.h"
+#include "Direct3DManager.h"
 
 #include <string>
 #include <sstream>
@@ -55,11 +55,11 @@ Direct3DRenderer::Direct3DRenderer() : Renderer()
 	m_lineBatcher = std::unique_ptr<Direct3DLineBatcher>(new Direct3DLineBatcher());
 	m_circleBatcher = std::unique_ptr<Direct3DCircleBatcher>(new Direct3DCircleBatcher());
 
-	CreateDDSTextureFromFile(DXManager->m_device, L"Assets\\background_texture.dds", NULL, &m_backgroundShaderResourceView, NULL);
-	CreateDDSTextureFromFile(DXManager->m_device, L"Assets\\creeps.dds", NULL, &m_creepsShaderResourceView, NULL);
-	CreateDDSTextureFromFile(DXManager->m_device, L"Assets\\spawn_platforms_projectiles_towers.dds", NULL, &m_spawnPlatformsProjectilesTowersShaderResourceView, NULL);
-	CreateDDSTextureFromFile(DXManager->m_device, L"Assets\\loose_objects_explosions.dds", NULL, &m_looseObjectsExplosionsShaderResourceView, NULL);
-	CreateDDSTextureFromFile(DXManager->m_device, L"Assets\\top_level_ui.dds", NULL, &m_topLevelUiShaderResourceView, NULL);
+	CreateDDSTextureFromFile(D3DManager->m_device, L"Assets\\background_texture.dds", NULL, &m_backgroundShaderResourceView, NULL);
+	CreateDDSTextureFromFile(D3DManager->m_device, L"Assets\\creeps.dds", NULL, &m_creepsShaderResourceView, NULL);
+	CreateDDSTextureFromFile(D3DManager->m_device, L"Assets\\spawn_platforms_projectiles_towers.dds", NULL, &m_spawnPlatformsProjectilesTowersShaderResourceView, NULL);
+	CreateDDSTextureFromFile(D3DManager->m_device, L"Assets\\loose_objects_explosions.dds", NULL, &m_looseObjectsExplosionsShaderResourceView, NULL);
+	CreateDDSTextureFromFile(D3DManager->m_device, L"Assets\\top_level_ui.dds", NULL, &m_topLevelUiShaderResourceView, NULL);
 
 	m_backgroundTexture = std::unique_ptr<TextureWrapper>(new TextureWrapper(m_backgroundShaderResourceView));
 	m_creepsTexture = std::unique_ptr<TextureWrapper>(new TextureWrapper(m_creepsShaderResourceView));
@@ -73,9 +73,9 @@ void Direct3DRenderer::clearScreenWithColor(float r, float g, float b, float a)
 	float color[] = { r, g, b, a };
 
 	// set our new render target object as the active render target
-	DXManager->m_deviceContext->OMSetRenderTargets(1, &DXManager->m_renderTargetView, nullptr);
+	D3DManager->m_deviceContext->OMSetRenderTargets(1, &D3DManager->m_renderTargetView, nullptr);
 
-	DXManager->m_deviceContext->ClearRenderTargetView(DXManager->m_renderTargetView, color);
+	D3DManager->m_deviceContext->ClearRenderTargetView(D3DManager->m_renderTargetView, color);
 }
 
 void Direct3DRenderer::beginFrame()

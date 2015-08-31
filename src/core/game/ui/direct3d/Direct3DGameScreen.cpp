@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Gowen Game Dev. All rights reserved.
 //
 
+#include "pch.h"
 #include "Direct3DGameScreen.h"
 #include "Vector2D.h"
 #include "TouchEvent.h"
@@ -18,7 +19,6 @@
 #include "Triangle.h"
 #include "Font.h"
 #include "Direct3DRenderer.h"
-#include "Global.h"
 #include "GameSound.h"
 #include "SpriteBatcher.h"
 #include "LineBatcher.h"
@@ -39,7 +39,7 @@
 #include "Circle.h"
 #include "GameConstants.h"
 #include "ResourceConstants.h"
-#include "DirectXManager.h"
+#include "Direct3DManager.h"
 
 Direct3DGameScreen::Direct3DGameScreen(int levelIndex, int difficulty) : GameScreen(levelIndex, difficulty)
 {
@@ -50,17 +50,17 @@ void Direct3DGameScreen::load(float deviceScreenWidth, float deviceScreenHeight,
 {
 	m_iDeviceScreenWidth = deviceScreenWidth;
 	m_iDeviceScreenHeight = deviceScreenHeight;
-	m_fGameScreenToDeviceScreenWidthRatio = deviceScreenWidth / GAME_WIDTH;
-	m_fGameScreenToDeviceScreenHeightRatio = deviceScreenHeight / GAME_HEIGHT;
+	m_fGameScreenToScreenWidthRatio = deviceScreenWidth / GAME_WIDTH;
+	m_fGameScreenToScreenHeightRatio = deviceScreenHeight / GAME_HEIGHT;
 	m_fDipToPixelRatio = (float)deviceScreenWidth / (float)deviceScreenDpWidth;
 
-	DXManager->init(deviceScreenWidth, deviceScreenHeight);
+	D3DManager->init(deviceScreenWidth, deviceScreenHeight);
 
 	m_renderer = std::unique_ptr<Direct3DRenderer>(new Direct3DRenderer());
 
 	// Load Background Music
 	m_mediaPlayer = std::unique_ptr<MediaEnginePlayer>(new MediaEnginePlayer);
-	m_mediaPlayer->Initialize(DXManager->m_device, DXGI_FORMAT_B8G8R8A8_UNORM);
+	m_mediaPlayer->Initialize(D3DManager->m_device, DXGI_FORMAT_B8G8R8A8_UNORM);
 
 	m_beginWaveSound = std::unique_ptr<GameSound>(new GameSound("assets\\begin_wave.wav"));
 	m_dragTowerSound = std::unique_ptr<GameSound>(new GameSound("assets\\drag_tower.wav"));
@@ -86,12 +86,12 @@ void Direct3DGameScreen::updateForRenderResolutionChange(float width, float heig
 	m_iDeviceScreenHeight = height;
 
 	ID3D11RenderTargetView* nullViews[] = { nullptr };
-	DXManager->m_deviceContext->OMSetRenderTargets(ARRAYSIZE(nullViews), nullViews, nullptr);
-	DXManager->m_renderTarget = nullptr;
-	DXManager->m_renderTargetView = nullptr;
-	DXManager->m_deviceContext->Flush();
+	D3DManager->m_deviceContext->OMSetRenderTargets(ARRAYSIZE(nullViews), nullViews, nullptr);
+	D3DManager->m_renderTarget = nullptr;
+	D3DManager->m_renderTargetView = nullptr;
+	D3DManager->m_deviceContext->Flush();
 
-	DXManager->initWindowSizeDependentResources(width, height);
+	D3DManager->initWindowSizeDependentResources(width, height);
 }
 
 void Direct3DGameScreen::handleSound()
@@ -187,27 +187,27 @@ void Direct3DGameScreen::unload()
 
 	m_renderer->cleanUp();
 
-	DXManager->cleanUp();
+	D3DManager->cleanUp();
 }
 
 ID3D11Texture2D* Direct3DGameScreen::getTexture()
 {
-	return DXManager->m_renderTarget;
+	return D3DManager->m_renderTarget;
 }
 
 void Direct3DGameScreen::touchToWorld(TouchEvent &touchEvent)
 {
-	m_touchPoint->set(touchEvent.getX() * m_fDipToPixelRatio / m_fGameScreenToDeviceScreenWidthRatio, GAME_HEIGHT - (touchEvent.getY() * m_fDipToPixelRatio / m_fGameScreenToDeviceScreenHeightRatio));
+	m_touchPoint->set(touchEvent.getX() * m_fDipToPixelRatio / m_fGameScreenToScreenWidthRatio, GAME_HEIGHT - (touchEvent.getY() * m_fDipToPixelRatio / m_fGameScreenToScreenHeightRatio));
 }
 
 void Direct3DGameScreen::platformResume()
 {
-	Global::getSoundPlayerInstance()->Resume();
+	GameSound::getSoundPlayerInstance()->Resume();
 }
 
 void Direct3DGameScreen::platformPause()
 {
-	Global::getSoundPlayerInstance()->Suspend();
+	GameSound::getSoundPlayerInstance()->Suspend();
 }
 
 bool Direct3DGameScreen::handleOnBackPressed()

@@ -19,7 +19,7 @@ class Direct3DGameScreen : public GameScreen
 public:
 	Direct3DGameScreen(int levelIndex, int difficulty);
 
-	void load(float deviceScreenWidth, float deviceScreenHeight, int deviceScreenDpWidth, int deviceScreenDpHeight);
+	void load(float screenWidth, float screenHeight, int screenDpWidth, int screenDpHeight);
 
 	void updateForRenderResolutionChange(float width, float height);
 
@@ -58,7 +58,7 @@ private:
 	std::unique_ptr<GameSound> m_towerUpgradedSound;
 	std::unique_ptr<GameSound> m_toxicCloudSound;
 
-	float m_fGameScreenToDeviceScreenWidthRatio;
-	float m_fGameScreenToDeviceScreenHeightRatio;
+	float m_fGameScreenToScreenWidthRatio;
+	float m_fGameScreenToScreenHeightRatio;
 	float m_fDipToPixelRatio;
 };

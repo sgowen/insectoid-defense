@@ -11,7 +11,6 @@
 #include "pch.h"
 #include "BasicTimer.h"
 #include "Direct3DGameScreen.h"
-#include "TouchEvent.h"
 #include <DrawingSurfaceNative.h>
 
 namespace InsectoidDefenseComp
@@ -74,14 +73,7 @@ namespace InsectoidDefenseComp
 		std::unique_ptr<Direct3DGameScreen> m_gameScreen;
 		BasicTimer^ m_timer;
 		Windows::Foundation::Size m_renderResolution;
-		std::vector<TouchEvent> m_touchEvents;
-		std::vector<TouchEvent> m_touchEventsPool;
-		std::vector<TouchEvent> m_touchEventsBuffer;
 
 		void onWaveCompleted();
-
-		void addTouchEventForType(Touch_Type touchType, float x, float y);
-
-		TouchEvent newTouchEvent();
 	};
 }
